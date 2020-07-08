@@ -1,0 +1,662 @@
+
+@import url("https://fonts.googleapis.com/css?family=Nunito:300");
+* {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+body {
+  margin: 0;
+  padding-bottom: 20px;
+  font-family: 'Nunito', sans-serif;
+  color: #fefefe;
+  background: #fefefe;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 400px;
+  height: 700px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.section {
+  padding: 5rem;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+}
+.header__text {
+  position: relative;
+  padding: 3.5rem 0 7rem;
+  color: #FAF8F8;
+}
+.header__text > h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+.header > .trapezoid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: skewY(-10deg);
+  transform-origin: top left;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background: linear-gradient(rgba(17, 38, 190, 0.8), rgba(17, 38, 190, 0.8));
+  background-position: top center;
+  background-attachment: fixed;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 17rem;
+  overflow: auto;
+}
+form > * + * {
+  margin-top: 1rem;
+}
+form > input {
+  border: 0;
+  border-bottom: 1px solid #1126be;
+  border-radius: 0;
+  width: 100%;
+  height: 2rem;
+  padding: 0 0 0.25rem 0;
+  font-size: 2rem;
+  color: #1126be;
+  background: #fefefe;
+}
+form > input:focus {
+  outline: none;
+}
+form > input::placeholder {
+  color: #1126be;
+}
+form > button {
+  margin-top: 2rem;
+  border: 0;
+  border-radius: 200px;
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1.5rem;
+  color: #fefefe;
+  background: #1126be;
+}
+form > button:focus {
+  outline: none;
+}
+form > p {
+  margin: 0.25rem 0 0;
+  text-align: center;
+  color: #1126be;
+}
+
+.sign-up {
+  display: none;
+}
+
+.opposite-btn1,
+.opposite-btn2 {
+  cursor: pointer;
+}
+
+#wrapper {
+    font-family: Lato;
+    font-size: 1.5rem;
+    text-align: center;
+    box-sizing: border-box;
+    color: #333;
+  }
+  #wrapper #dialog {
+    border: solid 1px #ccc;
+    margin: 10px auto;
+    padding: 20px 30px;
+    display: inline-block;
+    box-shadow: 0 0 4px #ccc;
+    background-color: #FAF8F8;
+    overflow: hidden;
+    position: relative;
+    max-width: 450px;
+  }
+  #wrapper #dialog h3 {
+    margin: 0 0 10px;
+    padding: 0;
+    line-height: 1.25;
+  }
+  #wrapper #dialog span {
+    font-size: 90%;
+  }
+  #wrapper #dialog #form {
+    max-width: 240px;
+    margin: 25px auto 0;
+  }
+  #wrapper #dialog #form input {
+    margin: 0 5px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 50px;
+    border: solid 1px #ccc;
+    box-shadow: 0 0 5px #ccc inset;
+    outline: none;
+    width: 20%;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border-radius: 3px;
+  }
+  #wrapper #dialog #form input:focus {
+    border-color: purple;
+    box-shadow: 0 0 5px purple inset;
+  }
+  #wrapper #dialog #form input::-moz-selection {
+    background: transparent;
+  }
+  #wrapper #dialog #form input::selection {
+    background: transparent;
+  }
+  #wrapper #dialog #form button {
+    margin: 30px 0 50px;
+    width: 100%;
+    padding: 6px;
+    background-color: #B85FC6;
+    border: none;
+    text-transform: uppercase;
+  }
+  #wrapper #dialog button.close {
+    border: solid 2px;
+    border-radius: 30px;
+    line-height: 19px;
+    font-size: 120%;
+    width: 22px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+  #wrapper #dialog div {
+    position: relative;
+    z-index: 1;
+  }
+  #wrapper #dialog img {
+    position: absolute;
+    bottom: -70px;
+    right: -63px;
+  }
+  
+  
+.fi2jvha {
+    align-items: center;
+    background: linear-gradient(to bottom,#3E51B5,#3957EA);
+    box-shadow: 0 2px 5px 2px rgba(1,1,1,0.4);
+    display: flex;
+    height: 60px;
+    left: 0;
+    margin: 0 auto;
+    max-width: 600px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+  }
+  
+  .fdacjj2 {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100px;
+  }
+  
+  .fc39scl {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .f1mgyl9u {
+    position: relative;
+  }
+  
+  .fpvt2jk {
+    height: 18px;
+    width: 40px;
+  }
+  
+  
+  .f1yjnwtq{
+  margin-left: 5px;
+    width: 18px;
+  }
+  
+  .f306i2h {
+    color: #ffffff;
+    font-size: 1.6em;
+    font-weight: 600;
+    padding-left: 15px;
+  }
+  
+  .fod5rt6 {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+  }
+  
+  .f18z1uyv {
+    align-items: center;
+    background-color: #2539A2;
+    border: 1px solid #6B83D9;
+    border-radius: 4px;
+    display: flex;
+    height: 42px;
+    margin-right: 9px;
+    width: 104px;
+  padding: 2px;
+  text-decoration: none;
+  }
+  
+  .ftw1wr0 {
+    margin-left: 5px;
+    width: 18px;
+  }
+  
+  .foh645m {
+    margin-left: 5px;
+  }
+  
+  .f1bw7g3l {
+    color: #B4C3FF;
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 1px;
+    text-transform: uppercase;
+  }
+  
+  .f1lwx3tj {
+    color: #ffffff;
+    font-size: 1.3em;
+    font-weight: 700;
+  }
+  
+  /* The side navigation menu */
+  .sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color:#2539A2; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+  
+  /* Avatar sid nav */
+  .avt_box {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .avt_img {
+    width: 20%;
+    box-sizing: border-box;
+    padding: 10px;
+    float: left;
+  }
+  
+  .avt_body {
+    width: 80%;
+    box-sizing: border-box;
+    float: left;
+  padding-left: 14px;
+  }
+  
+  .avt_body p {
+    color: #fff;
+    font-weight: 500;
+  }
+  
+  .avt_box::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  /* sidenav below header */
+  .dgn_nav {
+    background: #fff;
+    width: 80%;
+    margin: auto;
+  }
+  .dgn_nav a {
+    color: #4c4c4c;
+    font-size: 16px;
+    padding: 10px;
+  }
+  
+  .dgn_nav {
+    background: #fff;
+    width: 95%;
+    margin: auto;
+    color: #4c4c4c;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 20px;
+    height: 30em;
+  }
+  
+  .dgn_nav a:hover {
+    color: #3b53cf;
+  }
+  
+  /* header design point card */
+ .dgn_nav_points{
+    background: #fff;
+    width: 95%;
+    margin: auto;
+  }
+  .dgn_nav_points a {
+    color: #4c4c4c;
+    font-size: 16px;
+    padding: 10px;
+    border-bottom: 1px solid;
+  }
+  .f1efquwu {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 1px;
+  }
+  .fn5go5s {
+    width: 13%;
+  }
+  .fddsvlq {
+    align-items: center;
+    display: flex;
+  }
+  .f1vou0gj {
+    align-items: center;
+    background-color: #ffa52b;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px 0px rgba(1,1,1,0.2);
+    color: #ffffff;
+    display: flex;
+    font-size: 10px;
+    font-weight: 700;
+    height: 24px;
+    justify-content: center;
+    position: absolute;
+    right: 38px;
+    text-transform: uppercase;
+    width: 75px;
+    margin-top: -28px;
+  }
+  .fgtyo0p {
+    color: #2c2c2c;
+    font-size: 15px;
+    font-weight: 800;
+    padding-left: 8px;
+  }
+  .fqqlodu {
+  display: flex;
+  height: 46px;
+  margin-bottom: 10px;
+  }
+  .f1g5ko5c {
+  color: #2c2c2c;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 5px;
+  }
+  
+  .fjgjsfw {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 88px;
+  margin-top: -45px;
+  
+  }
+.fhusetb {
+  color: #2c2c2c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 3px;
+  margin-top: 4px;
+  max-width: 600px;
+  padding-bottom: 10px;
+  padding-top: 2px;
+  position: relative;
+  width: 100%;
+}
+.f1yhyggr {
+  background-color: #ffffff;
+  border: 1px solid #ededed;
+  border-radius: 5px;
+  box-shadow: 0px 2px 1px #e3dfdf;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 5px 0px 5px;
+  padding: 10px 10px;
+}
+.f1buug00 {
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.f1ux4458 {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.f1sgejs2 {
+  border-radius: 5px;
+  height: 100%;
+  width: 50%;
+}
+
+.gamename {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 179px;
+  margin-top: 9px;
+  font-size: large;
+}
+.foll6ss {
+  font-weight: 800;
+  font-size: 20px;
+}
+.f13wasxa {
+  align-items: center;
+  display: flex;
+  margin-top: 10px;
+}
+
+/*  Tournaments */
+ .f1ma0gg7 {
+  background-color: #f5f7ff;
+  border: 1px solid #e3e9ff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 90px;
+  margin: 10px 0;
+  position: relative;
+  width: 100%;
+}
+.f1ylnkmr {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  margin-left: 15px;
+  width: 10%;
+}
+.fshmzbu {
+  color: #b4c3ff;
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.f1wmjatj {
+  align-items: center;
+  color: #2c2c2c;
+  display: flex;
+  font-size: 20px;
+  font-weight: 700;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+.f1tq6dag {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  left: 37%;
+  position: absolute;
+}
+.fuhigyd {
+  background-color: #ededed;
+  height: 1px;
+  left: 0px;
+  margin-left: 5px;
+  margin-right: -5px;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  z-index: 1;
+}
+.f1mvdm5l {
+  align-items: center;
+  display: flex;
+  height: 50%;
+  padding-left: 8px;
+  position: relative;
+  width: 100%;
+}
+.f1omk9ww {
+  font-size: 1.1em;
+  font-weight: 500;
+  padding-left: 6px;
+}
+.f1mvdm5l {
+  align-items: center;
+  display: flex;
+  height: 50%;
+  padding-left: 8px;
+  position: relative;
+  width: 100%;
+}
+.f1omk9ww {
+  font-size: 1.1em;
+  font-weight: 500;
+  padding-left: 6px;
+}
+
+.f1dfiwkb {
+    font-size: 1.3em;
+    height: 26px;
+    width: 69px;
+}
+.f1dfiwkb {
+  align-items: center;
+  background-image: linear-gradient(to bottom,#736ffa,#543ae2);
+  border-radius: 5px;
+  box-shadow: 0 3px 14px 0 rgba(1,1,1,0.34);
+  color: #FFFFFF;
+  display: flex;
+  font-weight: 600;
+  justify-content: center;
+  margin-top: 30px;
+  overflow: hidden;
+  position: absolute;
+  right: 10px;
+  text-transform: uppercase;
+}
+.f1hn91pk{
+  max-width: 8%;
+  height: auto;
+  vertical-align: top;
+}
+
+
+.f1n7oroy{
+  max-width: 8%;
+  height: auto;
+  vertical-align: top;
+}
+.fo34vq9{
+  max-width: 30%;
+  height: auto;
+  vertical-align: top;
+}
+.clock_img{
+  font-size: 1.1em;
+  font-weight: 500;
+  padding-left: 5px;
+}
+div{
+  margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+gme_box1_img {
+    max-width: 50%;
+}
+
+
