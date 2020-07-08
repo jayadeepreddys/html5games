@@ -658,5 +658,322 @@ div{
 gme_box1_img {
     max-width: 50%;
 }
-
+.f1jus290 {
+    align-items: center;
+    background-color: #f5f5f5;
+    color: #2c2c2c;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+}
+.f5952zr {
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 3px 2px 0 rgba(1,1,1,0.1);
+    display: flex;
+    height: 105px;
+    left: 50%;
+    margin-bottom: 15px;
+    max-width: 600px;
+    position: fixed;
+    transform: translate(-50%,0px);
+    width: 100%;
+    z-index: 1;
+}
+.f1ou7ypi {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 15px;
+    width: 20px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+.f1kzzu38 {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+.fnlldhj {
+    border-radius: 5px;
+    height: 70px;
+    margin-left: 15px;
+    width: 105px;
+}
+.f1bl8y4h {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    position: relative;
+    font-size: 20px;
+}
+.f1n87iox {
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 0 rgba(1,1,1,0.1);
+    color: #3e51b5;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2em;
+    font-weight: 600;
+    height: 48px;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 120px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 96%;
+}
+.fes57ix {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 0px rgba(1, 1, 1, 0.1);
+    margin-top: 120px;
+    padding-bottom: 13px;
+    width: 100%;
+}
+.fes57ix {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 0px rgba(1, 1, 1, 0.1);
+    margin-top: 120px;
+    padding-bottom: 13px;
+    width: 100%;
+}
+.f388rt8 {
+    align-items: center;
+    border-bottom: 1px solid #ededed;
+    color: #c7c7c7;
+    display: flex;
+    font-size: 1.3em;
+    font-weight: 500;
+    height: 32px;
+    justify-content: center;
+    width: 100%;
+}
+.f16r7b8z {
+    border-bottom: 1px solid #ededed;
+    display: flex;
+    flex-direction: column;
+}
+.f1ajnpjt {
+    align-items: center;
+    display: flex;
+    height: 75px;
+    width: 100%;
+}
+.folblsh {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+.fkhz08q {
+    display: flex;
+    flex-direction: column;
+}
+.f1ih75lr {
+    color: #c7c7c7;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.fddsvlq {
+    align-items: center;
+    display: flex;
+}
+.fgzhdcl {
+    width: 15px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+.f5g9r1v {
+    align-items: center;
+    color: #2c2c2c;
+    display: flex;
+    font-size: 1.4em;
+    font-weight: 700;
+    justify-content: center;
+    margin-left: 8px;
+    text-transform: uppercase;
+}
+.ftlieln {
+    background-color: #ededed;
+    height: 55px;
+    width: 1px;
+}
+.folblsh {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+.fkhz08q {
+    display: flex;
+    flex-direction: column;
+}
+.f1ih75lr {
+    color: #c7c7c7;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.fddsvlq {
+    align-items: center;
+    display: flex;
+}
+.f1tbptsm {
+    width: 25px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+.f5g9r1v {
+    align-items: center;
+    color: #2c2c2c;
+    display: flex;
+    font-size: 1.4em;
+    font-weight: 700;
+    justify-content: center;
+    margin-left: 8px;
+    text-transform: uppercase;
+}
+.f1gtq151 {
+    margin-bottom: 120px;
+    max-height: 600px;
+    overflow-y: scroll;
+}
+.frimva9 {
+    color: #959595;
+    font-size: 1.3em;
+    font-weight: 500;
+    margin-top: 11px;
+    padding-left: 25px;
+}
+.f109yzak {
+    color: #2c2c2c;
+    font-weight: 800;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.f1d4a11x {
+    align-items: center;
+    animation: f1vdfiqo 0.2s;
+    display: flex;
+    height: 40px;
+    padding-left: 25px;
+    position: relative;
+}
+.f1mi6qxz {
+    color: #2c2c2c;
+    flex-grow: 6;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+.fkhz08q {
+    display: flex;
+    flex-direction: column;
+}
+.fewc13u {
+    align-items: center;
+    border-radius: 5px;
+    color: #2c2c2c;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.3em;
+    font-weight: 600;
+    height: 30px;
+    width: 116px;
+    padding-right: 20px;
+}
+.f1am1fq4 {
+    align-items: center;
+    background-color: #ffffff;
+    bottom: 0;
+    box-shadow: 0 -3px 6px 0 rgba(1,1,1,0.1);
+    display: flex;
+    flex-direction: column;
+    height: 118px;
+    left: 50%;
+    max-width: 600px;
+    position: fixed;
+    transform: translate(-50%,0px);
+    width: 100%;
+}
+.tournamentfull {
+    align-items: center;
+    background-color: #3e51b5;
+    border-radius: 5px;
+    box-shadow: 0 0 7px 1px rgba(1,1,1,0.34);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4em;
+    font-weight: 600;
+    height: 45px;
+    justify-content: center;
+    margin-top: 10px;
+    opacity: 1;
+    text-transform: uppercase;
+    width: 90%;
+}
+.gamecompleted {
+    align-items: center;
+    background-color: #3e51b5;
+    border-radius: 5px;
+    box-shadow: 0 0 7px 1px rgba(1,1,1,0.34);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4em;
+    font-weight: 600;
+    height: 45px;
+    justify-content: center;
+    margin-top: 10px;
+    opacity: 1;
+    text-transform: uppercase;
+    width: 90%;
+}
+.playbutton {
+    align-items: center;
+    background-color: #3e51b5;
+    border-radius: 5px;
+    box-shadow: 0 0 7px 1px rgba(1,1,1,0.34);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4em;
+    font-weight: 600;
+    height: 45px;
+    justify-content: center;
+    margin-top: 10px;
+    opacity: 1;
+    text-transform: uppercase;
+    width: 90%;
+}
+.flozei5 {
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 14px;
+    font-size: 20px;
+}
 
