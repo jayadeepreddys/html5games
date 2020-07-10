@@ -45,7 +45,7 @@
                                             <img src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"
                                                 alt="">
                                         </div>
-                                        <div class="fgtyo0p">100</div>
+                                        <div id="walletbalance" class="fgtyo0p">..</div>
                                     </div>
                                 </div>
                                 <div class="f1vou0gj" routerLink="/withdraw">Withdraw</div>
@@ -57,7 +57,7 @@
                                         <div class="fn5go5s"><img
                                                 src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"
                                                 alt=""></div>
-                                        <div class="fgtyo0p">50</div>
+                                        <div id="walletbalance" class="fgtyo0p">..</div>
                                     </div>
                                 </div>
                                 <div class="f1vou0gj" routerLink="/addmoney">Add</div>
@@ -68,7 +68,7 @@
                                     <div class="fddsvlq">
                                         <div class="fn5go5s"><img src="https://static.gamezop.com/peach/assets/img/token.svg"
                                                 alt=""></div>
-                                        <div class="fgtyo0p">36</div>
+                                        <div id="tokenbalance" class="fgtyo0p">..</div>
                                     </div>
                                 </div>
                                 <div class="f1vou0gj">Earn</div>
@@ -107,7 +107,7 @@
                         </div>
                         <div class="foh645m">
                             <div class="f1bw7g3l">Cash</div>
-                            <div class="f1lwx3tj">100</div>
+                            <div id="walletbalance" class="f1lwx3tj">..</div>
                         </div>
                     </a>
                     <a class="f18z1uyv" href="/tokenWallet?id=rJ49y5XJx">
@@ -116,7 +116,7 @@
                         </div>
                         <div class="foh645m">
                             <div class="f1bw7g3l">Tokens</div>
-                            <div class="f1lwx3tj">50</div>
+                            <div id="tokenbalance" class="f1lwx3tj">..</div>
                         </div>
                     </a>
                 </div>
@@ -134,7 +134,7 @@
                                     <div class="fbskoxs" style="background-color: rgb(44, 44, 44);"></div>
                                 </div>
                                 <div id="navigationBack" class="f1ou7ypi"><img
-                                        src="https://static.gamezop.com/peach/assets/img/black-back-arrow.png" alt=""(click)="backClicked()"></div>
+                                        src="https://static.gamezop.com/peach/assets/img/black-back-arrow.png" alt="" onclick="history.back()"></div>
                                 <div class="f1kzzu38"><img class="fnlldhj" src=""
                                         alt=""></div>
                                 <div class="f1bl8y4h" style="justify-content: normal;">
@@ -212,17 +212,16 @@
                                 </div>
                             </div>
                             <div class="f1am1fq4">
-                                <button class="tournamentfull"
-                                    style="background-image: linear-gradient(to right, rgb(240, 69, 89), rgb(240, 69, 89));" >Tournament Full
+                                
+                               <button onclick="joinGame()" class="joinbutton"
+                                    style="background-image: linear-gradient(to right, rgb(4, 194, 68), rgb(4, 194, 68));" >Join & Play
                                </button>
-                               <button (click)="gotoGame()" class="playbutton"
-                                    style="background-image: linear-gradient(to right, rgb(4, 194, 68), rgb(4, 194, 68));" >Play
+                               <button onclick="goToGame()" class="playbutton"
+                                    style="background-image: linear-gradient(to right, rgb(39, 4, 194), rgb(39, 4, 194));" >Play
                                </button>
-                               <button (click)="seeResults()" class="gamecompleted"
-                                    style="background-image: linear-gradient(to right, rgb(45, 4, 194), rgb(45, 4, 194));" >See Leaderboard
-                               </button>
-                                <div></div>
-                                <div></div>
+                             
+                              
+                                
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,10 @@
+var userid;
 $( document ).ready(function() {
     console.log( "ready!" );
    currentUser();
-  
+   
 });
+
 var newArray = [];
 function currentUser(){
     firebase.auth().onAuthStateChanged(function(user) {
@@ -10,9 +12,11 @@ function currentUser(){
           // User is signed in.
          
           var uid = user.uid;
+          userid = uid;
          console.log(uid);
        //  getTournaments();
          gamesData();
+         getWallet();
          
         } else {
             window.location.href = "http://localhost:7000/signup.html";
@@ -26,6 +30,27 @@ function openNav() {
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
   }
+  function getWallet(){
+    var balRef = db.collection("Users").doc(userid);
+
+    balRef.get().then(function(doc) {
+        if (doc.exists) {
+          console.log(doc.data());
+          userdata = doc.data();
+          walletBalance = userdata.walletBalance;
+          tokens = userdata.tokens;
+          $("[id=walletbalance]").text( walletBalance );
+          $("[id=tokenbalance]").text( tokens );
+
+
+        } else {
+            // doc.data() will be undefined in this case
+          
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+}
  function getTournaments(gameId){
     var tourRef = db.collection("Tournaments");
 
@@ -38,8 +63,9 @@ tourRef.where("gameId", "==", gameId).get().then(function(querySnapshot) {
        
     });
     console.log(data);
-    $( ".f1yhyggr" ).append( '<img id = "gameIMG" src="https://androidcommunity.com/wp-content/uploads/2016/02/featured-stack.jpg" alt="game card"><div class="gamename">'+data[0].gameName+'</div><div class='+data[0].gameName+' </div>' );
     if(data.indexOf(data) === -1 && data.length){
+        $( ".f1yhyggr" ).append( '<img id = "gameIMG" src="https://androidcommunity.com/wp-content/uploads/2016/02/featured-stack.jpg" alt="game card"><div class="gamename">'+data[0].gameName+'</div><div class='+data[0].gameName+' </div>' );
+
  //   newArray.push(data);
     //  console.log(newArray);
     for(var i = 0; i < data.length;i++){

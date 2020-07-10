@@ -1,19 +1,33 @@
+var data;
+var userid;
+var phoneNumber;
+var tournamentId;
+var docid;
+var userJoined = false;
+var walletBalance;
+var tokens;
 $( document ).ready(function() {
     console.log( "ready!" );
    currentUser();
    let searchParams = new URLSearchParams(window.location.search);
-   let tournamentId = searchParams.get('tournamentId');
+   tournamentId = searchParams.get('tournamentId');
    console.log(tournamentId);
-   getTournaments(tournamentId);
+   
   
 });
-var newArray = [];
+
 function currentUser(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
-         
+         phoneNumber = user.phoneNumber;
+         phoneNumber = phoneNumber.slice(3);
+         docid = phoneNumber.concat(tournamentId);
+         checkUser();
+         getTournaments(tournamentId);
           var uid = user.uid;
+          userid = uid;
+          getWallet();
          console.log(uid);
        //  getTournaments();
        
@@ -23,20 +37,59 @@ function currentUser(){
         }
       });
 }
+function getWallet(){
+    var balRef = db.collection("Users").doc(userid);
+
+    balRef.get().then(function(doc) {
+        if (doc.exists) {
+          console.log(doc.data());
+          userdata = doc.data();
+          walletBalance = userdata.walletBalance;
+          tokens = userdata.tokens;
+          $("[id=walletbalance]").text( walletBalance );
+          $("[id=tokenbalance]").text( tokens );
+
+
+        } else {
+            // doc.data() will be undefined in this case
+          
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+}
+function checkUser(){
+    console.log(docid);
+    var docRef = db.collection("TournamentUser").doc(docid);
+
+    docRef.get().then(function(doc) {
+        if (doc.exists) {
+           userJoined = true;
+           $(".playbutton").show();
+           $(".joinbutton").hide();
+        } else {
+            // doc.data() will be undefined in this case
+           userJoined = false;
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+    
+}
 function openNav() {
     document.getElementById("mySidenav").style.width = "300px";
   }
 
-  function closeNav() {
+function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
   }
-  function getTournaments(id){
+function getTournaments(id){
     db.collection("Tournaments").where("tournamentId", "==", id)
     .onSnapshot(function(querySnapshot) {
-      
         querySnapshot.forEach(function(doc) {
            console.log(doc.data());
            var data = doc.data();
+           this.data = data;
           // $(".tournamentfull").hide();
            //$(".playbutton").hide();
          //  $(".gamecompleted").hide();
@@ -53,25 +106,48 @@ function openNav() {
             $(".prize").append( '<div class="f5g9r1v">'+data.Prize+'</div>' );
            }
            $(".playercount").append( '<div class="f5g9r1v">'+data.joined+'<span style="margin: 0px 3px;">/</span>'+data.maxLimit+'</div>' );
-           if(data.joined == data.maxLimit){
-            $(".gamecompleted").hide();
-            $(".playbutton").hide();
-            $(".tournamentfull").show();
-           }
-           else{
+           if(userJoined){
             $(".playbutton").show();
-            $(".tournamentfull").hide();
-            $(".gamecompleted").hide();
-           }
-           if(data.status == "Tournament Completed"){
+            $(".joinbutton").hide();
+            
+          }
+           else{
             $(".playbutton").hide();
-            $(".tournamentfull").hide();
-            $(".gamecompleted").show();
-           }
+            $(".joinbutton").show();
+        }
         });
+    
        
     });
-
 }
+
+function joinGame(){
+    db.collection('TournamentUser').doc(docid).set(
+        {
+           
+          'gameName':data.gameName,
+          'entryFee': data.entryFee,
+          'gameId': data.gameId,
+          'timeStamp': new Date(),
+          'tournamentId' :data.tournamentId,
+          'userId': userid
+        })
+      alert("data inserted");
+      checkUser();
+    }
+
+
+function goToGame(){
+    var url = data.gameUrl;
+    var str1 = "?gameId="+data.gameId;
+    var str2 = "&userId="+userid;
+    var str3 = "&tournamentId="+tournamentId;
+    var str4 = "&mobile="+phoneNumber;
+    var finalurl = url.concat(str1, str2, str3, str4);
+   // console.log(finalurl);
+    window.location.href= finalurl;
+}
+
+
 
   

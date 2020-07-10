@@ -3,6 +3,7 @@
 console.clear();
 $( document ).ready(function() {
     console.log( "ready!" );
+    currentUser();
 });
 function requestFullScreen(element) {
     // Supports most browsers and their versions.
@@ -16,6 +17,15 @@ function requestFullScreen(element) {
             wscript.SendKeys("{F11}");
         }
     }
+}
+function currentUser(){
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log("You are logged in");
+        } else {
+            window.location.href = "http://localhost:7000/signup.html";
+        }
+      });
 }
 
 
