@@ -66,7 +66,7 @@ tourRef.where("gameId", "==", gameId).where("endTime", ">", currentdate).get().t
     });
     console.log(data);
     if(data.indexOf(data) === -1 && data.length){
-        $( ".f1yhyggr" ).append( '<img id = "gameIMG" src="https://androidcommunity.com/wp-content/uploads/2016/02/featured-stack.jpg" alt="game card"><div class="gamename">'+data[0].gameName+'</div><div class='+data[0].gameName+' </div>' );
+        $( ".f1yhyggr" ).append( '<div class="gamename"><img id = "gameIMG" class="gameImg" src="https://androidcommunity.com/wp-content/uploads/2016/02/featured-stack.jpg" alt="game card"><span class="game_name_txt">'+data[0].gameName+'</span></div><div class='+data[0].gameName+' </div>' );
 
  //   newArray.push(data);
     //  console.log(newArray);

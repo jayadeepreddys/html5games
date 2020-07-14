@@ -272,7 +272,7 @@ form > p {
     color: #B4C3FF;
     font-size: 1em;
     font-weight: 500;
-    margin-bottom: 1px;
+    margin-bottom: -5px;
     text-transform: uppercase;
   }
   
@@ -344,7 +344,8 @@ form > p {
     box-sizing: border-box;
     padding: 10px;
     float: left;
-  }
+    
+}
   
   .avt_body {
     width: 80%;
@@ -356,7 +357,8 @@ form > p {
   .avt_body p {
     color: #fff;
     font-weight: 500;
-  }
+    margin-top: 9%;
+}
   
   .avt_box::after {
     content: "";
@@ -502,12 +504,14 @@ form > p {
 }
 
 .gamename {
-  display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 179px;
-  margin-top: 9px;
   font-size: large;
+}
+span.game_name_txt {
+  padding-left: 28px;
+  font-size: 129%;
+  font-weight: 800;
 }
 .foll6ss {
   font-weight: 800;
@@ -918,6 +922,9 @@ img {
     transform: translate(-50%,0px);
     width: 100%;
 }
+img#gameIMG {
+  width: 60%;
+}
 
 .joinbutton {
     align-items: center;
@@ -960,4 +967,500 @@ img {
     margin-top: 14px;
     font-size: 20px;
 }
+/* game History page################################################ */
+.main_header {
+  align-items: center;
+  background: linear-gradient(to bottom,#3E51B5,#3957EA);
+  box-shadow: 0 2px 5px 2px rgba(1,1,1,0.4);
+  display: flex;
+  height: 60px;
+  left: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+}
+.header_txt {
+  color: #ffffff;
+  font-size: 1.6em;
+  font-weight: 600;
+  
+}
+
+.gme_card {
+width: 90%;
+margin: auto;
+box-sizing: border-box;
+box-shadow: 0 0 3px 3px #eaeaea;
+padding: 10px;
+margin-top: 90px;
+height:134px;
+border-radius: 5px;
+}
+
+p.card_txt {
+margin: 0px;
+font-size: 24px;
+font-family: MONOSPACE;
+font-weight: 600;
+margin-bottom: 12px;
+}
+.gme_box1 {
+width: 100%;
+box-sizing: border-box;
+border-bottom: 1px solid;
+height: 55px;
+}
+
+.gme_box1_img {
+width: 20%;
+box-sizing: border-box;
+float: left;
+padding-right: 12px;
+}
+
+.gme_box1_body {
+width: 50%;
+box-sizing: border-box;
+float: left;
+}
+
+.gme_box1_body p {
+margin: 0px;
+}
+
+.gme_box1::after {
+content: "";
+clear: both;
+display: table;
+}
+
+.gme_box2 {
+width: 100%;
+box-sizing: border-box;
+margin-top: 12px;
+}
+.div_main_result {
+align-items: center;
+display: flex;
+height: 46px;
+justify-content: center;
+padding: 2px 0;
+}
+.div_display_result {
+margin: 0 20px;
+text-align: center;
+width: 110px;
+}
+.div_result_img {
+align-items: center;
+display: flex;
+justify-content: center;
+margin-bottom: 5px;
+}
+.result_in_number {
+color: #393939;
+font-size: 1.5em;
+font-weight: 700;
+margin-left: 5px;
+}
+.div_entry_fee {
+color: #959595;
+font-size: 12px;
+text-transform: uppercase;
+}
+p.gme_title {
+font-size: 20px;
+margin-top: 12px;
+}
+
+.cash_img{
+  height: 13px; 
+  width: 17px;
+}
+img.image_arrow {
+  cursor: pointer;
+  margin-left: 14px;
+  width: 15%;
+}
+img.tic_tak_toc_img {
+  width: 70%;
+}
+/* free Games ################################################*/
+.img_win_cash {
+  min-height: 80px;
+  width: 100%;
+  margin-top: 69px;
+}
+.txt{
+  position: relative;
+  padding-top: 7px;
+  display: flex;
+  align-items: center;
+}
+.gme_card_free_games {
+  width: 93%;
+  margin: auto;
+  box-sizing: border-box;
+  box-shadow: 0 0 3px 3px #eaeaea;
+  padding: 10px;
+  margin-top: 18px;
+  height:20%;
+  border-radius: 5px;
+}
+.list_cat_game {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.list {
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: inline-block;
+  height: auto;
+  margin: 5px;
+  padding: 1px;
+  position: relative;
+  vertical-align: top;
+  width: 46%;
+  zoom: 1;
+}
+.sub_list_div {
+  background-color: #b2b2b2;
+  border-radius: 6px 6px 0 0;
+  min-height: 60px;
+  overflow: hidden;
+  width: 100%;
+}
+.game_name {
+  background-color: white;
+  color: #555;
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  overflow: hidden;
+  padding: 9px;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+p.card_txt {
+  font-size: 17px;
+  font-weight: 800;
+}
+img {
+max-width: 100%;
+height: auto;
+vertical-align: top;
+}
+
+.f306i2h {
+color: #ffffff;
+font-size: 1.6em;
+font-weight: 600;
+padding-left: 30px;
+}
+/* Payments Page ######################################## */
+.div_txt_step {
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0px 2px 1px #e3dfdf;
+  color: #5c5c5c;
+  display: flex;
+  font-size: 18px;
+  height: 50px;
+  padding: 0 15px;
+  margin-top: 18%;
+  width: 100%;
+}
+.payment_card{
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0px 2px 1px #e3dfdf;
+  color: #5c5c5c;
+  display: flex;
+  font-size: 1.5em;
+  height: 50px;
+  padding: 0 15px;
+}
+.div_main_enter_amount {
+  background-color: #ffffff;
+  box-shadow: 0px 2px 1px #e3dfdf;
+  margin: 0 auto;
+  /* margin-bottom: -18px; */
+   margin-top: 20px; 
+  overflow: hidden;
+  padding: 25px 10px 20px 10px;
+  transition: all 0.3s;
+  width: 94%;
+}
+.txt_enter_amount {
+  color: #5c5c5c;
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 11px;
+}
+.div_img_cash {
+  border-bottom: 1px solid #3e51b5;
+  display: flex;
+  margin-top: 15px;
+  width: 100%;
+}
+.txt_input_amount {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  outline: none;
+  padding-left: 10px;
+  width: 100%;
+}
+.div_disp_amount {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+.amount_value {
+  align-items: center;
+  border: 1px solid #3e51b5;
+  border-radius: 3px;
+  color: #3e51b5;
+  display: flex;
+  font-size: 15px;
+  height: 30px;
+  justify-content: center;
+  width: 56px;
+}
+
+.pay_btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5% 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  width:100%;
+}
+/* user details ################################################# */
+.main_avatar_phoneNumber {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 1px #e3dfdf;
+  color: #f7eded;
+  margin: 5px auto;
+  margin-top: 15px;
+  padding: 20px 0px;
+  position: relative;
+  width: 100%;
+  box-shadow: 0px 2px 1px #e3dfdf;
+}
+
+.div_avatar_img {
+  background: #FFFFFF;
+  border-radius: 50%;
+  height: 55px;
+  overflow: hidden;
+  width: 57px;
+  margin-left: 20px;
+}
+.div_avatar {
+  display: flex;
+}
+.div_phoneNumber {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-right: 46%;
+  position: relative;
+}
+.phoneNumber_txt {
+  color: #5c5c5c;
+  font-size: 18px;
+  font-weight: 500;
+  width: 100%;
+}
+.div_main_userDetails {
+background: #fff;
+border-radius: 5px;
+box-shadow: 0px 2px 1px #e3dfdf;
+display: flex;
+flex-direction: column;
+margin: 5px auto;
+width: 100%;
+}
+.a_balance {
+align-items: center;
+background: #fff;
+border-radius: 5px;
+display: flex;
+padding: 10px 15px;
+position: relative;
+}
+.txt_winningBal {
+display: flex;
+flex-direction: column;
+}
+img {
+max-width: 100%;
+height: auto;
+vertical-align: top;
+}
+.btn_withdraw {
+align-items: center;
+background-color: #ffa52b;
+border-radius: 3px;
+box-shadow: 0 1px 3px rgba(1,1,1,0.2);
+color: #fff;
+display: flex;
+font-size: 15px;
+font-weight: 700;
+height: 30px;
+justify-content: center;
+position: absolute;
+right: 15px;
+text-align: center;
+width: 90px;
+}
+div{
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+  padding-top: 2px;
+  padding: 10px 15px;
+}
+.btn_add {
+align-items: center;
+background-color: #31bc77;
+border-radius: 3px;
+box-shadow: 0 1px 3px rgba(1,1,1,0.2);
+color: #fff;
+display: flex;
+font-size: 15px;
+font-weight: 700;
+height: 30px;
+justify-content: center;
+position: absolute;
+right: 15px;
+text-align: center;
+width: 90px;
+}
+img#rightChevron {
+  width: 7px;
+  padding-top: 0px;
+  margin-top: -11px;
+}
+.logout_btn {
+  background-color:red; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5% 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  width:100%;
+}
+
+
+/* order History ##################################### */
+
+.order_history_box_main {
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  margin-bottom: 5px;
+  min-height: 72px;
+  padding: 0px;
+  position: relative;
+  width: 100%;
+  margin-top: 73px;
+  box-shadow: 0 1px 3px rgba(1,1,1,0.2);
+}
+.date_div {
+  
+  align-items: center;
+  color: #959595;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-left: 5px;
+  width: 30px;
+}
+.date_day {
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.game_img_div {
+  background-color: #ededed;
+  height: 40px;
+  margin: 0 10px;
+  width: 1px;
+}
+.game_img_sub_div {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  line-height: 20px;
+  width: 65%;
+}
+.game_txt {
+  color: #2c2c2c;
+  font-size: 1.3em;
+  font-weight: 500;
+  line-height: 20px;
+  margin-left: 2px;
+  overflow: hidden;
+}
+.cash_img_div {
+  display: flex;
+  max-width: 100px;
+  padding-right: 20px;
+  position: absolute;
+  right: 0px;
+}
+.cash_img {
+  align-items: center;
+  display: flex;
+}
+img.main_img_cash {
+  width: 20px;
+}
+.score_txt {
+  color: #2c2c2c;
+  font-size: 1.6em;
+  font-weight: 600;
+  margin-left: 5px;
+}
+img.img_game_main {
+  height: 32px;
+}
+
 
