@@ -49,7 +49,7 @@ function getWallet(){
           walletBalance = userdata.walletBalance;
           tokens = userdata.tokens;
           $("[id=walletbalance]").text( walletBalance );
-          $("[id=tokenbalance]").text( tokens );
+         
 
 
         } else {
@@ -97,8 +97,7 @@ function getTournaments(id){
     .onSnapshot(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
            console.log(doc.data());
-           var data = doc.data();
-           this.data = data;
+           data = doc.data();
           // $(".tournamentfull").hide();
            //$(".playbutton").hide();
          //  $(".gamecompleted").hide();
@@ -128,6 +127,8 @@ function getTournaments(id){
     
        
     });
+    $('.demo').hide();
+
 }
 
 function joinGame(){
@@ -143,7 +144,6 @@ function joinGame(){
           'userId': userid,
           'Score': 0
         })
-      alert("data inserted");
       checkUser();
       }
       else{

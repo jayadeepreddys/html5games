@@ -355,7 +355,7 @@ var Game = /** @class */ (function () {
         var currentScore = this.blocks.length -1;
         if (lastBlock && lastBlock.state == lastBlock.STATES.MISSED) {
             if(currentScore > lastscore ){
-            db.collection("TournamentUser").doc(gameId).set({
+            db.collection("TournamentUser").doc(gameId).update({
                 Score: this.blocks.length-1,
                 timeStamp: timeStamp
             })
