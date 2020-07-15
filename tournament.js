@@ -6,6 +6,7 @@ var docid;
 var userJoined = false;
 var walletBalance;
 var tokens;
+var userTournament;
 $( document ).ready(function() {
     console.log( "ready!" );
    currentUser();
@@ -65,7 +66,9 @@ function checkUser(){
       var data = [];
       querySnapshot.forEach(function(doc) {
           // doc.data() is never undefined for query doc snapshots
-          
+          if(doc.exists){
+          userTournament = doc.id;
+          }
           data.push(doc.data());
          
       });
@@ -137,7 +140,8 @@ function joinGame(){
           'gameId': data.gameId,
           'timeStamp': new Date(),
           'tournamentId' :data.tournamentId,
-          'userId': userid
+          'userId': userid,
+          'Score': 0
         })
       alert("data inserted");
       checkUser();
@@ -151,11 +155,11 @@ function joinGame(){
 
 function goToGame(){
     var url = data.gameUrl;
-    var str1 = "?gameId="+data.gameId;
-    var str2 = "&userId="+userid;
-    var str3 = "&tournamentId="+tournamentId;
-    var str4 = "&mobile="+phoneNumber;
-    var finalurl = url.concat(str1, str2, str3, str4);
+    var str1 = "?gameId="+userTournament;
+   // var str2 = "&userId="+userid;
+   // var str3 = "&tournamentId="+tournamentId;
+   // var str4 = "&mobile="+phoneNumber;
+    var finalurl = url.concat(str1);
    // console.log(finalurl);
     window.location.href= finalurl;
 }

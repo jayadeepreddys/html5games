@@ -33,15 +33,14 @@ var elem = document.body; // Make the body go full screen.
 function goFullScreen()
 {requestFullScreen(elem);}
 let searchParams = new URLSearchParams(window.location.search);
-let userId = searchParams.get('userId');
-console.log(userId);
+//let userId = searchParams.get('userId');
+//console.log(userId);
 let gameId = searchParams.get('gameId');
-let tournamentId = searchParams.get('tournamentId');
+//let tournamentId = searchParams.get('tournamentId');
 let timeStamp = new Date();
-let mobile = searchParams.get('mobile');
-let scoreId = mobile.concat(tournamentId);
+//let scoreId = mobile.concat(tournamentId);
 var lastscore = 0;
-console.log(scoreId);
+//console.log(scoreId);
 
 //console.log(user);
 var Stage = /** @class */ (function () {
@@ -275,7 +274,7 @@ var Game = /** @class */ (function () {
             this.scoreContainer.innerHTML = '0';
             this.updateState(this.STATES.PLAYING);
             this.addBlock();
-            var docRef = db.collection("GameScores").doc(scoreId);
+            var docRef = db.collection("TournamentUser").doc(gameId);
 
             docRef.get().then(function(doc) {
             if (doc.exists) {
@@ -356,12 +355,8 @@ var Game = /** @class */ (function () {
         var currentScore = this.blocks.length -1;
         if (lastBlock && lastBlock.state == lastBlock.STATES.MISSED) {
             if(currentScore > lastscore ){
-            db.collection("GameScores").doc(scoreId).set({
-                GameName: "Stack",
+            db.collection("TournamentUser").doc(gameId).set({
                 Score: this.blocks.length-1,
-                userId: userId,
-                gameId: gameId,
-                tournamentId: tournamentId,
                 timeStamp: timeStamp
             })
             .then(function() {
