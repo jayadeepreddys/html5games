@@ -23,11 +23,12 @@ function currentUser(){
          phoneNumber = user.phoneNumber;
          phoneNumber = phoneNumber.slice(3);
          docid = phoneNumber.concat(tournamentId);
-         checkUser();
+         
          getTournaments(tournamentId);
           var uid = user.uid;
           userid = uid;
           getWallet();
+          checkUser();
          console.log(uid);
        //  getTournaments();
        
@@ -59,11 +60,16 @@ function getWallet(){
     });
 }
 function checkUser(){
-    console.log(docid);
-    var docRef = db.collection("TournamentUser").doc(docid);
-
-    docRef.get().then(function(doc) {
-        if (doc.exists) {
+    var docRef = db.collection("TournamentUser");
+    docRef.where("tournamentId", "==", tournamentId).where("userId", "==", userid).get().then(function(querySnapshot) {
+      var data = [];
+      querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          
+          data.push(doc.data());
+         
+      });
+      if (data.length >0) {
            userJoined = true;
            $(".playbutton").show();
            $(".joinbutton").hide();
@@ -122,7 +128,8 @@ function getTournaments(id){
 }
 
 function joinGame(){
-    db.collection('TournamentUser').doc(docid).set(
+  if(walletBalance >= data.entryFee){
+    db.collection('TournamentUser').add(
         {
            
           'gameName':data.gameName,
@@ -134,7 +141,12 @@ function joinGame(){
         })
       alert("data inserted");
       checkUser();
-    }
+      }
+      else{
+        alert('Your wallet balance is low. Please recharge');
+      }
+   
+  }
 
 
 function goToGame(){
