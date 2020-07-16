@@ -110,6 +110,7 @@ function closeNav() {
             tourdata.push(doc.data());
         });
         sortRanks(tourdata);
+       
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
@@ -122,6 +123,7 @@ function sortRanks(tourdata){
     return parseFloat(b.Score) - parseFloat(a.Score);
  });
  console.log(tourdata);
+ leaderBoard(tourdata);
 }  
 function getTournaments(id){
     db.collection("Tournaments").where("tournamentId", "==", id)
@@ -243,7 +245,14 @@ function goToGame(){
    // console.log(finalurl);
     window.location.href= finalurl;
 }
-
+  function leaderBoard(tourdata){
+  if(tourdata.length > 0){
+    for(var i=0;i<tourdata.length;i++ )
+  $(".minprizes").append('<div class="f1d4a11x"><div class="f1mi6qxz">'+tourdata[i].name+'</div><span class="fkhz08q" style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><span>'+tourdata[i].Score+'</span></div></span><span class="fkhz08q" style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 177px;"><span>'+(i+1)+'</span></div></span></div>');
+  }
+  
+} 
+ 
 
 
   
