@@ -15,8 +15,8 @@ body {
 
 .wrapper {
   margin: 0 auto;
-  width: 400px;
-  height: 700px;
+  width: 100%;
+  height: 100%;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -570,6 +570,7 @@ img {
   justify-content: center;
   left: 37%;
   position: absolute;
+  width: 30%;
 }
 .fuhigyd {
   background-color: #ededed;
@@ -637,7 +638,7 @@ img {
 
 
 .f1n7oroy{
-  max-width: 8%;
+  max-width: 13%;
   height: auto;
   vertical-align: top;
 }
@@ -649,7 +650,8 @@ img {
 .clock_img{
   font-size: 1.1em;
   font-weight: 500;
-  padding-left: 5px;
+  padding-left: 3px;
+  
 }
 div{
   margin: 0;
