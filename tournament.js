@@ -7,6 +7,7 @@ var userJoined = false;
 var walletBalance;
 var tokens;
 var userTournament;
+var userName;
 $( document ).ready(function() {
     console.log( "ready!" );
    currentUser();
@@ -20,10 +21,15 @@ $( document ).ready(function() {
 function currentUser(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-          // User is signed in.
-         phoneNumber = user.phoneNumber;
-         phoneNumber = phoneNumber.slice(3);
-         docid = phoneNumber.concat(tournamentId);
+         userName = user.displayName;
+         if(!userName){
+         var phoneNumber = user.phoneNumber;
+         var str1 = phoneNumber.substring(0,6);
+         var str2 = phoneNumber.substring(9,13);
+         var str3 = "XXX";
+         userName = str1.concat(str3,str2)
+         
+         }
          
          getTournaments(tournamentId);
          getScores(tournamentId);
@@ -215,7 +221,8 @@ function joinGame(){
           'timeStamp': new Date(),
           'tournamentId' :data.tournamentId,
           'userId': userid,
-          'Score': 0
+          'Score': 0,
+          'name': userName
         })
       checkUser();
       }
