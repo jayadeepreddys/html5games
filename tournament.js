@@ -103,21 +103,26 @@ function closeNav() {
            console.log(doc.id);
             tourdata.push(doc.data());
         });
+        sortRanks(tourdata);
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
     // sort by ranks
-    tourdata.sort(function(a, b) {
-      return parseFloat(b.Score) - parseFloat(a.Score);
-   });
-   console.log(tourdata);
+   
   }
+function sortRanks(tourdata){
+  tourdata.sort(function(a, b) {
+    return parseFloat(b.Score) - parseFloat(a.Score);
+ });
+ console.log(tourdata);
+}  
 function getTournaments(id){
     db.collection("Tournaments").where("tournamentId", "==", id)
     .onSnapshot(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
            console.log(doc.data());
+           $("[id=ranks]").remove();
            data = doc.data();
            var maxUsers = data.maxLimit;
            var minUsers = maxUsers*0.3;
@@ -151,28 +156,17 @@ function getTournaments(id){
                 var range = range1;
                 var fprize = Math.round(totalPrize*0.5/10);
                 var minfprize = Math.round(entryFee*joined*0.5/10);
-                $('.prizes').append( '<div class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
-                if(joined>=minUsers){
-                $('.minprizes').append( '<div class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+minfprize+'</span></div></span></div>');
-                } 
+                $('.prizes').append( '<div id="ranks" class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
                 break;
                 case 2:
                 var range = range2;
                 var fprize = totalPrize*0.3/10;
-                $('.prizes').append( '<div class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
-                var minfprize = Math.round(entryFee*joined*0.3/10);
-                if(joined>=minUsers){
-                  $('.minprizes').append( '<div class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+minfprize+'</span></div></span></div>');
-                  } 
+                $('.prizes').append( '<div id="ranks" class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
                   break;
                 case 3:
                 var range = range3;
                 var fprize = Math.round(totalPrize*0.2/10);
-                $('.prizes').append( '<div class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
-                var minfprize = Math.round(entryFee*joined*0.2/10);
-                if(joined>=minUsers){
-                  $('.minprizes').append( '<div class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+minfprize+'</span></div></span></div>');
-                  } 
+                $('.prizes').append( '<div id="ranks" class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
   
                 break;
                 default:
