@@ -41,7 +41,6 @@ function openNav() {
           console.log(doc.data());
           userdata = doc.data();
           walletBalance = userdata.walletBalance;
-          tokens = userdata.tokens;
           $("[id=walletbalance]").text( walletBalance );
 
 
