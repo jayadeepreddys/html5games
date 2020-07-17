@@ -506,7 +506,7 @@ form > p {
 .gamename {
   flex-direction: column;
   justify-content: center;
-  font-size: large;
+  /* font-size: large; */
 }
 span.game_name_txt {
   padding-left: 28px;
@@ -925,7 +925,7 @@ img {
     width: 100%;
 }
 img#gameIMG {
-  width: 60%;
+  width: 40%;
 }
 
 .joinbutton {
