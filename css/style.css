@@ -1401,7 +1401,7 @@ img#rightChevron {
   padding: 0px;
   position: relative;
   width: 100%;
-  margin-top: 73px;
+  
   box-shadow: 0 1px 3px rgba(1,1,1,0.2);
 }
 .date_div {
@@ -1438,7 +1438,7 @@ img#rightChevron {
   font-size: 1.3em;
   font-weight: 500;
   line-height: 20px;
-  margin-left: 2px;
+  margin-left: 30px;
   overflow: hidden;
 }
 .cash_img_div {
@@ -1452,9 +1452,7 @@ img#rightChevron {
   align-items: center;
   display: flex;
 }
-img.main_img_cash {
-  width: 20px;
-}
+
 .score_txt {
   color: #2c2c2c;
   font-size: 1.6em;
@@ -1462,7 +1460,10 @@ img.main_img_cash {
   margin-left: 5px;
 }
 img.img_game_main {
-  height: 32px;
+  height:50px;
+}
+a.navigate_tid {
+  padding: 0px 0px;
 }
 /* CSS loader*/
 .demo:empty {
@@ -1509,6 +1510,9 @@ img.img_game_main {
       120px 80px,
       120px 120px;
   }
+}
+.main_order_div {
+  margin-top: 78px;
 }
 /* tournaments tab buttons */
 .tab {
