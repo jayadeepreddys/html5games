@@ -2,6 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 // extract from chromium source code by @liuwayong
+$( document ).ready(function() {
+    console.log( "ready!" );
+    currentUser();
+});
+function currentUser(){
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log("You are logged in");
+        } else {
+            window.location.href = "http://localhost:7000/signup.html";
+        }
+      });
+}
+let searchParams = new URLSearchParams(window.location.search);
+let gameId = searchParams.get('gameId');
+let timeStamp = new Date();
+var lastscore = 0;
 (function () {
     'use strict';
     /**
@@ -489,13 +506,14 @@
                 this.restart();
             }
         },
-
+         
 
         /**
          * Update the game status to started.
          */
         startGame: function () {
             screen.orientation.lock('landscape');
+            // get current user score
             this.runningTime = 0;
             this.playingIntro = false;
             this.tRex.playingIntro = false;
@@ -788,10 +806,38 @@
             } else {
                 this.gameOverPanel.draw();
             }
+               // Get the highest score
+                // get current user score
+            var docRef = db.collection("TournamentUser").doc(gameId);
 
+            docRef.get().then(function(doc) {
+            if (doc.exists) {
+                console.log("Document data:", doc.data());
+                lastscore = doc.data().Score;
+                console.log(lastscore);
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
             // Update the high score.
             if (this.distanceRan > this.highestScore) {
                 this.highestScore = Math.ceil(this.distanceRan);
+               // console.log(this.distanceRan);
+               if(this.highestScore > lastscore ){
+                db.collection("TournamentUser").doc(gameId).update({
+                    Score: this.highestScore,
+                    timeStamp: timeStamp
+                })
+                .then(function() {
+                    console.log("Game score updated");
+                })
+                .catch(function(error) {
+                    console.error("Error writing document: ", error);
+                });
+            }
                 this.distanceMeter.setHighScore(this.highestScore);
             }
 
