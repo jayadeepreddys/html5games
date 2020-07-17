@@ -66,7 +66,7 @@ tourRef.where("gameId", "==", gameId).where("endTime", ">", currentdate).get().t
     });
     console.log(data);
     if(data.indexOf(data) === -1 && data.length){
-        $( ".f1yhyggr" ).append( '<div class="gamename"><img id = "gameIMG" class="gameImg" src='+data[0].gameImg+' alt="game card"><span class="game_name_txt">'+data[0].gameName+'</span></div><div class='+data[0].gameName+' </div>' );
+       $( ".fhusetb" ).append( ' <div class="f1yhyggr"><div class="gamename"><img id = "gameIMG" class="gameImg" src='+data[0].gameImg+' alt="game card"><span class="game_name_txt">'+data[0].gameName+'</span></div><div class='+data[0].gameName+' </div></div>' );
 
  //   newArray.push(data);
     //  console.log(newArray);
