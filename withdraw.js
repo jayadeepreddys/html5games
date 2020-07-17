@@ -62,7 +62,7 @@ function getWallet(){
           userdata = doc.data();
           walletBalance = userdata.walletBalance;
           $(".div_txt_step").text('Current Balance is: ' +walletBalance );
-
+          document.getElementById("loader").style.display = "none";
         } else {
             // doc.data() will be undefined in this case
           
