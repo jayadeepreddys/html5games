@@ -137,6 +137,9 @@ function getTournaments(id){
            var totalPrize = data.Prize;
            var entryFee = data.entryFee;
            var joined = data.joined;
+           if(joined < minUsers){
+            $(".board").hide();
+           }
            if(minUsers === 3){
              var range1 = "1";
              var range2 = "2";
