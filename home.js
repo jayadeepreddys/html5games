@@ -16,6 +16,7 @@ function currentUser(){
           var uid = user.uid;
           userid = uid;
         var mobile = user.phoneNumber;
+        $("#name").text(mobile);
          console.log(mobile);
        //  getTournaments();
          gamesData();
