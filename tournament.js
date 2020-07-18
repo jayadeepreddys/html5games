@@ -257,6 +257,9 @@ function goToGame(){
   }
   
 } 
+function logout(){
+  firebase.auth().signOut();
+}
  
 
 

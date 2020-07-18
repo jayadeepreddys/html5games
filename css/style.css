@@ -280,6 +280,7 @@ form > p {
     color: #ffffff;
     font-size: 1.3em;
     font-weight: 700;
+    margin-left: 7px;
   }
   
   /* The side navigation menu */
@@ -478,9 +479,10 @@ form > p {
   border-radius: 5px;
   box-shadow: 0px 2px 1px #e3dfdf;
   display: flex;
-  flex-direction: column;
-  margin: 10px 5px 0px 5px;
+ flex-direction: column;
+  margin: 7% 2% -4% 1%;
   padding: 10px 10px;
+  width: 97%;
 }
 .f1buug00 {
   align-items: center;
@@ -530,7 +532,7 @@ span.game_name_txt {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  height: 90px;
+  height:100px;
   margin: 10px 0;
   position: relative;
   width: 100%;
@@ -542,6 +544,7 @@ span.game_name_txt {
   justify-content: center;
   margin-left: 15px;
   width: 10%;
+  padding: 0px 0px 0px 0px;
 }
 .fshmzbu {
   color: #b4c3ff;
@@ -570,7 +573,7 @@ img {
   justify-content: center;
   left: 37%;
   position: absolute;
-  width: 30%;
+  width: 52%;
 }
 .fuhigyd {
   background-color: #ededed;
@@ -587,22 +590,21 @@ img {
   align-items: center;
   display: flex;
   height: 50%;
-  padding-left: 8px;
+  padding-left: 13px;
   position: relative;
   width: 100%;
+  color:black;
+  padding-left: 30%;
 }
 .f1omk9ww {
   font-size: 1.1em;
   font-weight: 500;
   padding-left: 6px;
 }
-.f1mvdm5l {
-  align-items: center;
-  display: flex;
-  height: 50%;
-  padding-left: 8px;
-  position: relative;
-  width: 100%;
+.f1mvdm5l.carddiv {
+  width: 84%;
+  padding: 4px;
+  left: 35px;
 }
 .f1omk9ww {
   font-size: 1.1em;
@@ -638,7 +640,7 @@ img {
 
 
 .f1n7oroy{
-  max-width: 13%;
+  max-width: 10%;
   height: auto;
   vertical-align: top;
 }
@@ -648,7 +650,7 @@ img {
   vertical-align: top;
 }
 .clock_img{
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 500;
   padding-left: 3px;
   
@@ -1346,12 +1348,12 @@ font: inherit;
 vertical-align: baseline;
 }
 
-a {
+/* a {
   color: #337ab7;
   text-decoration: none;
   padding-top: 2px;
   padding: 10px 15px;
-}
+} */
 .btn_add {
 align-items: center;
 background-color: #31bc77;
