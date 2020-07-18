@@ -55,7 +55,6 @@ function loadRecaptcha() {
           $(".wrapper").hide();
           $("#wrapper").show();
           window.confirmationResult = confirmationResult;
-          optVerify()
         }).catch(function (error) {
           // Error; SMS not sent
           console.log(error);
@@ -67,12 +66,7 @@ function loadRecaptcha() {
   }
   function enterOTP(){
     var first = document.getElementById('1').value;
-    var second = document.getElementById('2').value;
-    var third = document.getElementById('3').value;
-    var fourth = document.getElementById('4').value;
-    var fifth = document.getElementById('5').value;
-    var sixth = document.getElementById('6').value;
-    var code = first.concat(second, third, fourth, fifth,sixth);
+    var code = first;
     console.log(code);
     window.confirmationResult.confirm(code).then(function (result) {
       // User signed in successfully.
@@ -90,51 +84,8 @@ function loadRecaptcha() {
   function reload(){
     location.reload();
   }
-function optVerify(){
-  
-  
-    var body = $("body");
-  
-    function goToNextInput(e) {
-      var key = e.which,
-        t = $(e.target),
-        sib = t.next("input");
-  
-      if (key != 9 && (key < 48 || key > 57)) {
-        e.preventDefault();
-        return false;
-      }
-  
-      if (key === 9) {
-        return true;
-      }
-  
-      if (!sib || !sib.length) {
-        sib = body.find("input").eq(0);
-      }
-      sib.select().focus();
-    }
-  
-    function onKeyDown(e) {
-      var key = e.which;
-  
-      if (key === 9 || (key >= 48 && key <= 57)) {
-        return true;
-      }
-  
-      e.preventDefault();
-      return false;
-    }
-  
-    function onFocus(e) {
-      $(e.target).select();
-    }
-  
-    body.on("keyup", "input", goToNextInput);
-    body.on("keydown", "input", onKeyDown);
-    body.on("click", "input", onFocus);
-  };
-  function button_disable(){
+
+   function button_disable(){
    $('#phone_number').keyup(function () {
       if ($(this).val() == '') {
           $('.otpbutton').prop('disabled', true);
@@ -142,6 +93,8 @@ function optVerify(){
           $('.otpbutton').prop('disabled', false);
       }
   });
-  }
+  } 
+ 
+
 
   

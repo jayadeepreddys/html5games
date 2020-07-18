@@ -137,19 +137,19 @@ form > p {
   #wrapper #dialog #form input {
     margin: 0 5px;
     text-align: center;
-    line-height: 80px;
-    font-size: 50px;
+    line-height: 40px;
+    font-size: 30px;
     border: solid 1px #ccc;
     box-shadow: 0 0 5px #ccc inset;
     outline: none;
-    width: 20%;
+    width: 70%;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     border-radius: 3px;
   }
   #wrapper #dialog #form input:focus {
-    border-color: purple;
-    box-shadow: 0 0 5px purple inset;
+    border-color: rgb(13, 0, 128);
+    box-shadow: 0 0 5px rgb(0, 19, 128) inset;
   }
   #wrapper #dialog #form input::-moz-selection {
     background: transparent;
@@ -161,7 +161,7 @@ form > p {
     margin: 30px 0 50px;
     width: 100%;
     padding: 6px;
-    background-color: #B85FC6;
+    background-color: rgb(97, 48, 233);
     border: none;
     text-transform: uppercase;
   }
