@@ -342,9 +342,8 @@ form > p {
   .avt_img {
     width: 20%;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 6px;
     float: left;
-    
 }
   
   .avt_body {
@@ -358,6 +357,7 @@ form > p {
     color: #fff;
     font-weight: 500;
     margin-top: 9%;
+    font-size: 20px;
 }
   
   .avt_box::after {

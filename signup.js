@@ -4,6 +4,7 @@ $( document ).ready(function() {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     $("#wrapper").hide();
     currentUser();
+    button_disable();
 });
 function currentUser(){
     firebase.auth().onAuthStateChanged(function(user) {
@@ -133,4 +134,14 @@ function optVerify(){
     body.on("keydown", "input", onKeyDown);
     body.on("click", "input", onFocus);
   };
+  function button_disable(){
+   $('#phone_number').keyup(function () {
+      if ($(this).val() == '') {
+          $('.otpbutton').prop('disabled', true);
+      } else {
+          $('.otpbutton').prop('disabled', false);
+      }
+  });
+  }
+
   

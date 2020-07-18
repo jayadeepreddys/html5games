@@ -21,7 +21,9 @@ $( document ).ready(function() {
 function currentUser(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-         userName = user.displayName;
+          var mobile = user.phoneNumber;
+          $("#name").text(mobile);
+          userName = user.displayName;
          if(!userName){
          var phoneNumber = user.phoneNumber;
          var str1 = phoneNumber.substring(0,6);
