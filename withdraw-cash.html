@@ -20,18 +20,18 @@
     <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-firestore.js"></script>
 
     <script src="auth.js"> </script>
-    <script src="home.js"> </script>
+    <script src="withdraw.js"> </script>
 </head>
 
 <body>
     <div id="portalNav" class="main_header">
+            <div id="loader"></div>
         <a href="">
-            <img src="https://static.gamezop.com/peach/assets/img/white-back-arrow.png" class="image_arrow">
+            <img src="https://static.gamezop.com/peach/assets/img/white-back-arrow.png" onclick="history.back()" class="image_arrow">
         </a>
-        <div class="header_txt">Withdraw Money</div>
+        <div class="header_txt">Withdraw</div>
     </div>
     <div class="div_txt_step">
-        <span style="font-weight: 600;">Step 1: </span>
         <span style="font-weight: 500; margin-left: 5px;">
             Enter amount to withdraw</span>
     </div>
@@ -44,21 +44,21 @@
                     <img src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"
                         style="height: 20px;">
                 </span>
-                <input id="walletInput" class="txt_input_amount" type="tel" value="">
+                <input id="walletInput" onclick="typeAmount()" class="txt_input_amount" type="number" value="">
             </div>
-            <div style="margin: 20px 0px; font-size:15px; font-weight: 600; color: rgb(92, 92, 92);">Quickly Add
+            <div style="margin: 20px 0px; font-size:15px; font-weight: 600; color: rgb(92, 92, 92);">Quick Select
             </div>
             <div class="div_disp_amount">
-                <div id="easyRecharge25" class="amount_value">₹25</div>
-                <div id="easyRecharge50" class="amount_value">₹50</div>
-                <div id="easyRecharge100" class="amount_value">₹100</div>
-                <div id="easyRecharge200" class="amount_value">₹200</div>
+                <div id="easyRecharge25" onclick="setAmount(25)" class="amount_value">₹25</div>
+                <div id="easyRecharge50" onclick="setAmount(50)" class="amount_value">₹50</div>
+                <div id="easyRecharge100" onclick="setAmount(100)" class="amount_value">₹100</div>
+                <div id="easyRecharge200" onclick="setAmount(200)" class="amount_value">₹200</div>
             </div>
         </div>
 
     </div>
     <div>
-        <button class="pay_btn">Withdraw Money</button>
+        <button onclick="withdraw()" class="pay_btn">Withdraw Money</button>
     </div>
 
 </body>

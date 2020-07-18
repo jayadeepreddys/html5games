@@ -33,16 +33,16 @@
                 </header>
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="avt_box">
-                    <div class="avt_img" routerLink="/userdetails">
+                    <div class="avt_img">
                         <img src="https://static.gamezop.com/placeholders/avatar-2.jpg" alt="avatar">
                     </div>
 
                     <div class="avt_body">
-                        <p>Reddy</p>
+                        <p id="name">Reddy</p>
                     </div>
                 </div>
                 <div class="dgn_nav_points">
-                    <a id="sidebarWithdraw" class="fflrbt6" routerLink="/withdraw">
+                    <a id="sidebarWithdraw" class="fflrbt6" href="withdraw-cash.html">
                         <div class="fmn8x67">
                             <div class="f1efquwu">Winnings Balance</div>
                             <div class="fddsvlq">
@@ -53,9 +53,9 @@
                                 <div id="walletbalance" class="fgtyo0p">..</div>
                             </div>
                         </div>
-                        <div class="f1vou0gj" routerLink="/withdraw">Withdraw</div>
+                        <div class="f1vou0gj" href="withdraw-cash.html">Withdraw</div>
                     </a>
-                    <a id="sidebarDeposit" class="fflrbt6" routerLink="/addmoney">
+                    <a id="sidebarDeposit" class="fflrbt6" href="payments.html">
                         <div class="fmn8x67">
                             <div class="f1efquwu">Deposit &amp; Promo Balance</div>
                             <div class="fddsvlq">
@@ -65,17 +65,17 @@
                                 <div id="walletbalance" class="fgtyo0p">..</div>
                             </div>
                         </div>
-                        <div class="f1vou0gj" routerLink="/addmoney">Add</div>
+                        <div class="f1vou0gj" href="payments.html">Add</div>
                     </a>
 
                 </div>
 
 
                 <div class="dgn_nav">
-                    <a routerLink="/home">Win Cash</a>
-                    <a routerLink="/notifcation">Notication</a>
-                    <a routerLink="/gamehistory">Game History</a>
-                    <a routerLink="/freegames">Free Games</a>
+                    <a href="home.html">Win Cash</a>
+                    <a href="gamehistory.html">Game History</a>
+                    <a href="freegame.html">Free Games</a>
+                    <a href="userdetails.html">User Details</a>
                 </div>
             </div>
 
@@ -96,7 +96,7 @@
 
         <div class="f306i2h"></div>
         <div class="fod5rt6">
-            <a class="f18z1uyv" routerLink="/addmoney">
+            <a class="f18z1uyv" href="payments.html">
                 <div class="ftw1wr0">
                     <img src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt="">
                 </div>
@@ -108,6 +108,7 @@
 
         </div>
     </div>
+
     <!--Game details-->
     <div id="contest-page" class="fkilb6h" style="overflow: scroll;">
         <div class="f45h"></div>
@@ -131,9 +132,9 @@
                     </div>
                 </div>
                 <div class="f1n87iox">Tap to see rules</div>
-                <div style="width: 96%; min-height: 400px;">
+                <div style="width: 96%; min-height: 534px;">
                     <div class="fes57ix" style="border-radius: 5px; margin-top: 0px;">
-                       
+
                         <div class="f16r7b8z">
                             <div class="f1ajnpjt">
                                 <div class="folblsh">
@@ -172,17 +173,31 @@
                                 <button class="tablinks" >Prize Breakup</button>
                                 <button class="tablinks" >Leader</button>
                             </div> -->
-                        
+
                             <div class="frimva9">Prize Breakup</div>
                             <div class="prizes">
-                               
                             </div>
-                            <div class="frimva9">Leaderboard</div>
-                            <div class="minprizes">
-                               
-                            </div>
-                            
                         </div>
+                        <div class="board">
+                            <div class="frimva9">Leaderboard</div>
+                            <div class="f1d4a11x">
+                                <div class="f1mi6qxz">Name</div>
+                                <span class="fkhz08q" style="position: absolute; right: 15px;">
+                                    <div class="fewc13u" style="right: 15px; width: 53px;">
+                                        <span>Score</span>
+                                    </div>
+                                </span>
+                                <span class="fkhz08q" style="position: absolute; right: 15px;">
+                                    <div class="fewc13u" style="right: 15px; width: 196px;">
+                                        <span>Rank</span>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="minprizes">
+                                <!--  -->
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="f1am1fq4">

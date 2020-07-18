@@ -342,9 +342,8 @@ form > p {
   .avt_img {
     width: 20%;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 6px;
     float: left;
-    
 }
   
   .avt_body {
@@ -358,6 +357,7 @@ form > p {
     color: #fff;
     font-weight: 500;
     margin-top: 9%;
+    font-size: 20px;
 }
   
   .avt_box::after {
@@ -506,7 +506,7 @@ form > p {
 .gamename {
   flex-direction: column;
   justify-content: center;
-  font-size: large;
+  /* font-size: large; */
 }
 span.game_name_txt {
   padding-left: 28px;
@@ -863,7 +863,7 @@ img {
     text-transform: uppercase;
 }
 .f1gtq151 {
-    margin-bottom: 120px;
+    /* margin-bottom: 120px; */
     max-height: 600px;
     overflow-y: scroll;
 }
@@ -912,12 +912,12 @@ img {
 }
 .f1am1fq4 {
     align-items: center;
-    background-color: #ffffff;
+    background-color:#f5f5f5 ;
     bottom: 0;
     box-shadow: 0 -3px 6px 0 rgba(1,1,1,0.1);
     display: flex;
     flex-direction: column;
-    height: 118px;
+    height: 60px;
     left: 50%;
     max-width: 600px;
     position: fixed;
@@ -925,7 +925,7 @@ img {
     width: 100%;
 }
 img#gameIMG {
-  width: 60%;
+  width: 40%;
 }
 
 .joinbutton {
@@ -1401,7 +1401,7 @@ img#rightChevron {
   padding: 0px;
   position: relative;
   width: 100%;
-  margin-top: 73px;
+  
   box-shadow: 0 1px 3px rgba(1,1,1,0.2);
 }
 .date_div {
@@ -1438,7 +1438,7 @@ img#rightChevron {
   font-size: 1.3em;
   font-weight: 500;
   line-height: 20px;
-  margin-left: 2px;
+  margin-left: 30px;
   overflow: hidden;
 }
 .cash_img_div {
@@ -1452,9 +1452,7 @@ img#rightChevron {
   align-items: center;
   display: flex;
 }
-img.main_img_cash {
-  width: 20px;
-}
+
 .score_txt {
   color: #2c2c2c;
   font-size: 1.6em;
@@ -1462,7 +1460,10 @@ img.main_img_cash {
   margin-left: 5px;
 }
 img.img_game_main {
-  height: 32px;
+  height:50px;
+}
+a.navigate_tid {
+  padding: 0px 0px;
 }
 /* CSS loader*/
 .demo:empty {
@@ -1510,6 +1511,9 @@ img.img_game_main {
       120px 120px;
   }
 }
+.main_order_div {
+  margin-top: 78px;
+}
 /* tournaments tab buttons */
 .tab {
   overflow: hidden;
@@ -1535,11 +1539,52 @@ img.img_game_main {
   background-color: #ccc;
 }
 
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
+/* leader Board  */
+.column {
+  float: left;
+  width: 33.33%; 
+}
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 20em;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 20%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
 }
 

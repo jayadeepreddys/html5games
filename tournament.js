@@ -21,7 +21,9 @@ $( document ).ready(function() {
 function currentUser(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-         userName = user.displayName;
+          var mobile = user.phoneNumber;
+          $("#name").text(mobile);
+          userName = user.displayName;
          if(!userName){
          var phoneNumber = user.phoneNumber;
          var str1 = phoneNumber.substring(0,6);
@@ -110,6 +112,7 @@ function closeNav() {
             tourdata.push(doc.data());
         });
         sortRanks(tourdata);
+       
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
@@ -122,6 +125,7 @@ function sortRanks(tourdata){
     return parseFloat(b.Score) - parseFloat(a.Score);
  });
  console.log(tourdata);
+ leaderBoard(tourdata);
 }  
 function getTournaments(id){
     db.collection("Tournaments").where("tournamentId", "==", id)
@@ -135,6 +139,9 @@ function getTournaments(id){
            var totalPrize = data.Prize;
            var entryFee = data.entryFee;
            var joined = data.joined;
+           if(joined < minUsers){
+            $(".board").hide();
+           }
            if(minUsers === 3){
              var range1 = "1";
              var range2 = "2";
@@ -243,7 +250,14 @@ function goToGame(){
    // console.log(finalurl);
     window.location.href= finalurl;
 }
-
+  function leaderBoard(tourdata){
+  if(tourdata.length > 0){
+    for(var i=0;i<tourdata.length;i++ )
+  $(".minprizes").append('<div class="f1d4a11x"><div class="f1mi6qxz">'+tourdata[i].name+'</div><span class="fkhz08q" style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><span>'+tourdata[i].Score+'</span></div></span><span class="fkhz08q" style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 177px;"><span>'+(i+1)+'</span></div></span></div>');
+  }
+  
+} 
+ 
 
 
   
