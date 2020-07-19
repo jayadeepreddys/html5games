@@ -8,6 +8,7 @@ var walletBalance;
 var tokens;
 var userTournament;
 var userName;
+var status;
 $( document ).ready(function() {
     console.log( "ready!" );
    currentUser();
@@ -41,13 +42,15 @@ function currentUser(){
           checkUser();
          console.log(uid);
        //  getTournaments();
-       
+      // $(".f1am1fq4").hide();
+       $(".cancelled").hide();
          
         } else {
             window.location.href = "http://localhost:7000/signup.html";
         }
       });
 }
+
 function getWallet(){
     var balRef = db.collection("Users").doc(userid);
 
@@ -56,6 +59,7 @@ function getWallet(){
           console.log(doc.data());
           userdata = doc.data();
           walletBalance = userdata.walletBalance;
+          walletBalance = parseInt(walletBalance);
           tokens = userdata.tokens;
           $("[id=walletbalance]").text( walletBalance );
          
@@ -70,6 +74,7 @@ function getWallet(){
     });
 }
 function checkUser(){
+  $(".f1am1fq4").show();
     var docRef = db.collection("TournamentUser");
     docRef.where("tournamentId", "==", tournamentId).where("userId", "==", userid).get().then(function(querySnapshot) {
       var data = [];
@@ -139,6 +144,9 @@ function getTournaments(id){
            var totalPrize = data.Prize;
            var entryFee = data.entryFee;
            var joined = data.joined;
+           status = data.status;
+            console.log(status);
+           
            if(joined < minUsers){
             $(".board").hide();
            }
@@ -209,10 +217,23 @@ function getTournaments(id){
             $(".playbutton").hide();
             $(".joinbutton").show();
         }
+        
+       
+         /*  if(status === 1){
+            console.log("Game completed");
+            $(".f1am1fq4").hide();
+          }
+           if(status === 1){
+             console.log("cancelled");
+            $(".cancelled").show();
+          }  */
+       
+            
         });
     
        
     });
+   
     $('.demo').hide();
 
 }
