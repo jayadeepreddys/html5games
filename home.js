@@ -97,7 +97,7 @@ function gamesData() {
       // console.log(gameData.gameId);
       getTournaments(gameId);
     });
-
+   getChallenges();
   }).catch(function (error) {
     console.log("Error getting document:", error);
   });
@@ -105,6 +105,24 @@ function gamesData() {
 }
 function logout(){
   firebase.auth().signOut();
+}
+function getChallenges(){
+  var gameRef = db.collection("Challenges");
+  challengedata = [];
+  gameRef.get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      challengedata.push(doc.data());
+      console.log(challengedata);
+    });
+    for(j=0;j<challengedata.length;j++){
+      var gamename = challengedata[j].gameName;
+      $("." + gamename + '').append('<a class="" href="http://localhost:7000/challenges.html?challengeId=' + challengedata[j].challengeId + '"><div class="f1ma0gg7"><div class="contestCardDeposit500" style="display: flex; height: 100%; position: relative;"><div class="f1ylnkmr"><div class="fshmzbu">Prize</div><div class="f1wmjatj"><img class="fpliu47"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt=""><spanstyle="margin-left: 7px;">' + challengedata[j].prize + '</span></div></div><div class="f1tq6dag" style="left: 30%;"><div class="f1mvdm5l" style="padding-top: 3px;"><img class="f1hn91pk"src="https://static.gamezop.com/peach/assets/img/faceless-player.svg" alt=""></div><div class="f1mvdm5l" style="padding-left: 0px; padding-bottom: 0px;"><img class="f1n7oroy"src="https://static.gamezop.com/peach/assets/img/timer.svg" alt=""><div class="clock_img">1-1 Challenge</div></div></div><div class="f1dfiwkb"><img class="fo34vq9" src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt=""><span>' + challengedata[j].entryFee + '</span></div></div></div><a>');
+    }
+ 
+  }).catch(function (error) {
+    console.log("Error getting document:", error);
+  });
+   
 }
 
 
