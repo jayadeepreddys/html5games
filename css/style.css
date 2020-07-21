@@ -1858,7 +1858,7 @@ h2 {
       font-size: 19px;
   }
   .btn {
-      background-color: DodgerBlue;
+      background-color: #3e51b5;
       border: none;
       color: white;
       padding: 12px 16px;
@@ -1873,7 +1873,7 @@ h2 {
       display: block;
       width: 100%;
       border: none;
-      background-color:DodgerBlue;
+      background-color:#3e51b5;
       color: white;
       padding: 14px 28px;
       font-size: 16px;
