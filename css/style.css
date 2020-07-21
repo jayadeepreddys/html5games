@@ -637,6 +637,11 @@ img {
   height: auto;
   vertical-align: top;
 }
+.battle_img_home {
+  max-width: 15%;
+  height: auto;
+  vertical-align: top;
+}
 
 
 .f1n7oroy{
@@ -654,6 +659,11 @@ img {
   font-weight: 500;
   padding-left: 3px;
   
+}
+.battle_txt_home{
+  font-size: 1em;
+  font-weight: 500;
+  padding-left: 11%;
 }
 div{
   margin: 0;
