@@ -113,7 +113,7 @@ function closeNav() {
 function joinGame(){
   if(walletBalance >= gameData.entryFee){
    
-        db.collection('Battles').add(
+        db.collection('Battles').doc(userid).set(
           {
              
             'gameName':gameData.gameName,
@@ -122,27 +122,18 @@ function joinGame(){
             'timeStamp': new Date(),
             'challengeId' :challengeId,
             'userId': userid,
-            'Score': 0,
             'name': userName
           })
-          .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-            db.collection('ChallengeQueue').add(
+         
+            db.collection('ChallengeQueue').doc(userid).set(
               {
-                 
-                'gameId': gameData.gameId,
-                'timeStamp': new Date(),
                 'challengeId' :challengeId,
-                'userId': userid,
-                'battleId': docRef.id
+                'timeStamp': new Date(),
+                'userId': userid
               })
               console.log("Added to Queue");
-              checkStatus(docRef.id);
-        })
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-        });
-          console.log("Added to Queue"); 
+              checkStatus();
+       
       }
       else{
         alert('Your wallet balance is low. Please recharge');
@@ -150,15 +141,15 @@ function joinGame(){
    
   }
 
-function checkStatus(id){
+function checkStatus(){
   console.log("Matching with a user");
-  db.collection("Battles").doc(id)
+  db.collection("Battles").doc(userid)
   .onSnapshot(function(doc) {
     console.log(doc.data());
     var data = doc.data();
-    var matchId = data.matchId;
-    console.log(matchId);
-     if(matchId){
+    var opponentId = data.opponent;
+    console.log(opponentId);
+     if(opponentId){
        console.log(" I am matched with a user. Proceed to play");
      }
   });
