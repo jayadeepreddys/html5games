@@ -76,11 +76,9 @@ function opponentScore(opponentId){
       opponentscore = data.Score;
       var name = data.name;
       $("#opponentname").text(name);
-       if(opponentscore > 0){
+       if(opponentscore){
         $("#opponentscore").text(opponentscore);
-        if(opponentScore){
         declareWinner();
-        }
         //updateScores();
        }
     });
