@@ -123,7 +123,8 @@ function joinGame(){
             'challengeId' :challengeId,
             'userId': userid,
             'name': userName,
-             'Prize': gameData.prize
+             'Prize': gameData.prize,
+             'gameUrl': gameData.gameUrl
           })
           .then(function(battleId) {
             var battleId = battleId.id;

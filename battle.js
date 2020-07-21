@@ -4,6 +4,8 @@ var mobile;
 var amount=0;
 var battleId;
 var challengeId;
+var playerscore;
+var opponentScore;
 $( document ).ready(function() {
     console.log( "ready!" );
    currentUser();
@@ -40,23 +42,59 @@ function checkStatus(){
       var data = doc.data();
       var opponentId = data.opponent;
       var status = data.status;
-      var score = data.Score;
+      playerscore = data.Score;
       challengeId = data.challengeId;
-      console.log(opponentId);
+      var gameUrl = data.gameUrl;
+       console.log(gameUrl);
        if(opponentId){
          console.log(" I am matched with a user. Proceed to play");
          $("#opponent").text( 'Opponent Matched');
+         opponentScore(opponentId);
+       }
+       if(opponentId && !playerscore){
+        window.location.href = gameUrl+'?battleId='+battleId+'';
        }
        if(status === 0){
         console.log(" No player found");
         $("#opponent").text( 'No Opponent found. Try after sometime');
        }
-       if(score > 0){
+       if(playerscore > 0){
         $("#opponent").text( 'Game Completed. Waiting for Oponent score');
         $(".afterBattle").show();
         $("#load-wrapper").hide();
+        $("#playerscore").text(playerscore);
+        //updateScores();
        }
     });
+  }
+function opponentScore(opponentId){
+    console.log("I am checking oponent score")
+    db.collection("Battles").doc(opponentId)
+    .onSnapshot(function(doc) {
+      console.log(doc.data());
+      var data = doc.data();
+      opponentscore = data.Score;
+      var name = data.name;
+      $("#opponentname").text(name);
+       if(opponentscore > 0){
+        $("#opponentscore").text(opponentscore);
+        if(opponentScore){
+        declareWinner();
+        }
+        //updateScores();
+       }
+    });
+    
+  }
+
+  function declareWinner(){
+      console.log(playerscore, opponentScore);
+   if(playerscore > opponentScore){
+    $("#result").text("You Won");
+   }
+   else {
+    $("#result").text("You Lost");
+   }
   }
 
 function retryBattle(){
