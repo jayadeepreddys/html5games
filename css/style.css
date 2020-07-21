@@ -1590,3 +1590,222 @@ a.navigate_tid {
   to{ bottom:0; opacity:1 }
 }
 
+.money_game_battle{
+  width: 100%;
+  height: 50%;
+  text-align: center;
+}
+.image_and_txt {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  width: 50%;
+}
+p.battle_icon_txt {
+  color: black;
+  font-weight: 600;
+  font-size: 22px;
+}
+img.main_ballte_img {
+ width: 50%;
+}
+.person_avt {
+ margin-top: 20%;
+}
+.cash_details {
+  margin-top: 35%;
+}
+img.man_img {
+  width: 40%;
+}
+#load-wrapper {
+  position: fixed;
+  background: #2A2438;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}	
+
+#loader2{
+  display: block;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform:scale(4,4);
+}
+
+.ball,
+.colorRing,
+.ringTwo,
+.ringThree,
+.ringFour {
+  top:50%;
+  left:50%;
+  display:block;
+  border-radius:50%;
+  position:absolute;
+  vertical-align:middle;
+}
+
+.ball {
+  width:10px;
+  height:10px;
+  margin:-5px 0 0 -5px;
+  background: #5C5470;
+  animation:2000ms pulseInPrimary 1500ms cubic-bezier(0.4, 0.0, 0.2, 1)  infinite;
+  -webkit-animation:2000ms pulseInPrimary 1500ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite;	
+}
+
+.colorRing {
+  width:16px;
+  height:16px;
+  margin:-9px 0 0 -9px;
+  border:1px solid #86CB92 ;
+  animation:2000ms pulseIn cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+  -webkit-animation:2000ms pulseIn 100ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite;						
+}
+
+@keyframes pulseIn {
+  0%{
+    opacity:0;
+    transform:scale(0.2,0.2);
+  }
+  50% {
+    opacity:1;
+    transform:scale(1,1);
+  }
+  100% {
+    opacity:0;
+    transform:scale(0.2,0.2);
+  }
+}
+
+@-webkit-keyframes pulseIn {
+  0% {
+    opacity:0;
+    -webkit-transform:scale(0.2,0.2);
+  }
+  50% {
+    opacity:1;
+    -webkit-transform:scale(1,1);
+  }
+  100%{
+    opacity:0;
+    -webkit-transform:scale(0.2,0.2);
+  }
+}
+
+@keyframes pulseInPrimary{
+  0%{
+    opacity:1;
+    transform:scale(0.2,0.2);
+  }
+  50%{
+    opacity:1;
+    transform:scale(1.4,1.4);
+  }
+  100%{
+    opacity:1;
+    transform:scale(0.1,0.1);
+  }
+}
+
+@-webkit-keyframes pulseInPrimary{
+  0%{
+    opacity:0;
+    -webkit-transform:scale(0.1,0.1);
+  }
+  50%{
+    opacity:1;
+    -webkit-transform:scale(1,1);
+  }
+  100%{
+    opacity:0;
+    -webkit-transform:scale(0.2,0.2);
+  }
+}
+
+
+.ringTwo{
+  width:40px;
+  height:40px;
+  background: rgba(250, 250, 250, 0.03);
+  border:1px solid #fafafa;
+  margin:-21px 0 0 -21px;
+  animation:2000ms pulseIn 500ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+  -webkit-animation:2000ms pulseIn 500ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite	
+}
+
+@keyframes pulseInSecondary {
+  0%{
+    opacity:0;
+    transform:scale(0.2,0.2);
+  }
+  50% {
+    opacity:1;
+    transform:scale(1,1);
+  }
+  100% {
+    opacity:0;
+    transform:scale(0.2,0.2);
+  }
+}
+
+@-webkit-keyframes pulseInSecondary {
+  0% {
+    opacity:0;
+    -webkit-transform:scale(0.2,0.2);
+  }
+  50% {
+    opacity:1;
+    -webkit-transform:scale(1,1);
+  }
+  100%{
+    opacity:0;
+    -webkit-transform:scale(0.2,0.2);
+  }
+}
+
+
+.ringThree{
+  width:48px;
+  height:48px;
+  border:1px solid rgba(250, 250, 250, 0.03);
+  margin:-25px 0 0 -25px;
+  animation:2000ms pulseInSecondary 550ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+  -webkit-animation:2000ms pulseInSecondary 550ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite;	
+}
+
+.ringFour{
+  width:56px;
+  height:56px;
+  border:1px solid rgba(250, 250, 250, 0.03);
+  margin:-29px 0 0 -29px;
+  animation:2000ms pulseInSecondary 600ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+  -webkit-animation:2000ms pulseInSecondary 600ms cubic-bezier(0.4, 0.0, 0.2, 1) infinite;	
+}
+
+#label {
+  position: relative;
+  top: 66%;
+}
+
+p {
+  color: #d0cade;
+  font-size: .889em;
+  line-height: 1.2;
+  font-family: 'Inconsolata', sans-serif;
+  text-align: center;
+
+}
+h2 {
+  color: #fafafa;
+  font-size: 1.777em;
+  line-height: 1.2;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+

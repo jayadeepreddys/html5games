@@ -113,7 +113,7 @@ function closeNav() {
 function joinGame(){
   if(walletBalance >= gameData.entryFee){
    
-        db.collection('Battles').doc(userid).set(
+        db.collection('Battles').add(
           {
              
             'gameName':gameData.gameName,
@@ -124,23 +124,36 @@ function joinGame(){
             'userId': userid,
             'name': userName
           })
-         
-            db.collection('ChallengeQueue').doc(userid).set(
+          .then(function(battleId) {
+            var battleId = battleId.id;
+             db.collection('ChallengeQueue').doc(userid).set(
               {
                 'challengeId' :challengeId,
                 'timeStamp': new Date(),
-                'userId': userid
+                'userId': userid,
+                 'battleId': battleId
               })
               console.log("Added to Queue");
-              checkStatus();
-       
+              preLoad(battleId);
+        })
+        .catch(function(error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+        
+         
+          
+             
       }
       else{
         alert('Your wallet balance is low. Please recharge');
       }
-   
+     
+       
   }
-
+function preLoad(battleId){
+  window.location.href = 'http://localhost:7000/battle.html?battleId='+battleId+'';
+}
 function checkStatus(){
   console.log("Matching with a user");
   db.collection("Battles").doc(userid)
