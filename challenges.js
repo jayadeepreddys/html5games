@@ -122,7 +122,8 @@ function joinGame(){
             'timeStamp': new Date(),
             'challengeId' :challengeId,
             'userId': userid,
-            'name': userName
+            'name': userName,
+             'Prize': gameData.prize
           })
           .then(function(battleId) {
             var battleId = battleId.id;
@@ -167,23 +168,8 @@ function checkStatus(){
      }
   });
 }
-function goToGame(){
-    var url = data.gameUrl;
-    var str1 = "?gameId="+userTournament;
-   // var str2 = "&userId="+userid;
-   // var str3 = "&tournamentId="+tournamentId;
-   // var str4 = "&mobile="+phoneNumber;
-    var finalurl = url.concat(str1);
-   // console.log(finalurl);
-    window.location.href= finalurl;
-}
-  function leaderBoard(tourdata){
-  if(tourdata.length > 0){
-    for(var i=0;i<tourdata.length;i++ )
-  $(".minprizes").append('<div class="f1d4a11x"><div class="f1mi6qxz">'+tourdata[i].name+'</div><span class="fkhz08q" style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><span>'+tourdata[i].Score+'</span></div></span><span class="fkhz08q" style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 177px;"><span>'+(i+1)+'</span></div></span></div>');
-  }
+
   
-} 
 function playersOnline(){
   db.collection("ChallengeQueue").where("challengeId", "==", challengeId)
     .onSnapshot(function(querySnapshot) {

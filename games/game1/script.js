@@ -36,7 +36,7 @@ let searchParams = new URLSearchParams(window.location.search);
 //let userId = searchParams.get('userId');
 //console.log(userId);
 let gameId = searchParams.get('gameId');
-//let tournamentId = searchParams.get('tournamentId');
+let battleId = searchParams.get('battleId');
 let timeStamp = new Date();
 //let scoreId = mobile.concat(tournamentId);
 var lastscore = 0;
@@ -274,8 +274,8 @@ var Game = /** @class */ (function () {
             this.scoreContainer.innerHTML = '0';
             this.updateState(this.STATES.PLAYING);
             this.addBlock();
+            if(gameId){
             var docRef = db.collection("TournamentUser").doc(gameId);
-
             docRef.get().then(function(doc) {
             if (doc.exists) {
                 console.log("Document data:", doc.data());
@@ -288,6 +288,7 @@ var Game = /** @class */ (function () {
         }).catch(function(error) {
             console.log("Error getting document:", error);
         });
+        }
         }
     };
     Game.prototype.restartGame = function () {
@@ -354,7 +355,7 @@ var Game = /** @class */ (function () {
         var lastBlock = this.blocks[this.blocks.length - 1];
         var currentScore = this.blocks.length -1;
         if (lastBlock && lastBlock.state == lastBlock.STATES.MISSED) {
-            if(currentScore > lastscore ){
+            if(gameId && currentScore > lastscore ){
             db.collection("TournamentUser").doc(gameId).update({
                 Score: this.blocks.length-1,
                 timeStamp: timeStamp
@@ -368,6 +369,18 @@ var Game = /** @class */ (function () {
         }
         else {
             console.log("Game score is not highest");
+        }   
+        if(battleId){
+            db.collection("Battles").doc(battleId).update({
+                Score: this.blocks.length-1,
+                timeStamp: timeStamp
+            })
+            .then(function() {
+                window.location.href = 'http://localhost:7000/battle.html?battleId='+battleId+'';
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
         }
             return this.endGame();
            
