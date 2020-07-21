@@ -1807,5 +1807,79 @@ h2 {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
 }
+/* after game */
+
+  .battle_logo_img {
+      text-align: center;
+  }
+  img.main_ballte_img {
+      width: 25%;
+  }
+  p.battle_icon_txt {
+   color: white;
+    font-weight: 600;
+    font-size: 22px;
+}
+  img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top;
+  }
+ 
+  .column1 {
+      float: left;
+      width: 33.33%;
+      padding: 5px;
+    }
+    .column2 {
+      float: right;
+      width: 33.33%;
+      padding: 5px;
+    }
+  
+    p.txt_user {
+      text-align: center;
+      color: white;
+      font-size: larger;
+  }
+  .row {
+     margin-top: 15%;
+  }
+  .text{
+      text-align: center;
+      margin-top: 90%;
+  }
+  .result{
+      color: white;
+      font-size: 25px;
+  }
+  .motivation{
+      color: white;
+      font-size: 19px;
+  }
+  .btn {
+      background-color: DodgerBlue;
+      border: none;
+      color: white;
+      padding: 12px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .footer_btn{
+        margin-top: 20%;
+    }
+  
+    .block {
+      display: block;
+      width: 100%;
+      border: none;
+      background-color:DodgerBlue;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
+  
 
 

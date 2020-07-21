@@ -12,7 +12,7 @@ $( document ).ready(function() {
    let searchParams = new URLSearchParams(window.location.search);
    battleId = searchParams.get('battleId');
    console.log(battleId);
-   
+   $(".afterBattle").hide();
    
 });
 function currentUser(){
@@ -53,6 +53,8 @@ function checkStatus(){
        }
        if(score > 0){
         $("#opponent").text( 'Game Completed. Waiting for Oponent score');
+        $(".afterBattle").show();
+        $("#load-wrapper").hide();
        }
     });
   }
