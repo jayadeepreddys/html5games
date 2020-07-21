@@ -86,8 +86,8 @@ function opponentScore(opponentId){
   }
 
   function declareWinner(){
-      console.log(playerscore, opponentScore);
-   if(playerscore > opponentScore){
+      console.log(playerscore, opponentscore);
+   if(playerscore > opponentscore){
     $("#result").text("You Won");
    }
    else {
