@@ -1103,6 +1103,57 @@ img.image_arrow {
 img.tic_tak_toc_img {
   width: 70%;
 }
+/* Notifcation Page #############################*/
+.div_display_result_notif {
+  margin: 0 20px;
+  text-align: center;
+  width: 110px;
+  }
+.div_result_img_notif {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    }
+    .cash_notif {
+      max-width: 50%;
+      height: auto;
+      vertical-align: top;
+  }
+    .result_in_number_notif {
+      color: #393939;
+      font-size: 20px;
+      font-weight: 700;
+      margin-left: 5px;
+      }
+      .f16t7t75_notif {
+        width: 20%;
+      }
+      img.img_game_main_notif {
+        width: 85%;
+      }
+      .game_txt_notif {
+        color: #2c2c2c;
+        font-size: 1.3em;
+        font-weight: 500;
+        line-height: 20px;
+        overflow: hidden;
+        text-align: center;
+        width: 80%;
+      }
+      .game_txt_notif_ord {
+        color: #2c2c2c;
+        font-size: 1.3em;
+        font-weight: 500;
+        line-height: 20px;
+        overflow: hidden;
+        text-align: center;
+        width: 60%;
+      }
+      .f16t7t75_ord {
+        width: 40%;
+      }
+
 /* free Games ################################################*/
 .img_win_cash {
   min-height: 80px;
@@ -1443,15 +1494,24 @@ img#rightChevron {
   display: flex;
   flex-direction: row;
   line-height: 20px;
-  width: 65%;
+  width: 100%;
+}
+.game_img_sub_div_ord {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  line-height: 20px;
+  width: 100%;
 }
 .game_txt {
   color: #2c2c2c;
   font-size: 1.3em;
   font-weight: 500;
   line-height: 20px;
-  margin-left: 30px;
+  /* margin-left: 10px; */
   overflow: hidden;
+  text-align: center;
+  width: 80%;
 }
 .cash_img_div {
   display: flex;
@@ -1477,6 +1537,7 @@ img.img_game_main {
 a.navigate_tid {
   padding: 0px 0px;
 }
+
 /* CSS loader*/
 .demo:empty {
   margin: auto;
@@ -1524,7 +1585,8 @@ a.navigate_tid {
   }
 }
 .main_order_div {
-  margin-top: 78px;
+  margin: 18% 1% 1% 1%;
+  box-shadow: 0px 2px 3px #e3dfdf;
 }
 /* tournaments tab buttons */
 .tab {
