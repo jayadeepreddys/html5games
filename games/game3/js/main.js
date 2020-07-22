@@ -11,6 +11,7 @@ $( document ).ready(function() {
 });
 let searchParams = new URLSearchParams(window.location.search);
 let gameId = searchParams.get('gameId');
+let battleId = searchParams.get('battleId');
 let timeStamp = new Date();
 var lastscore = 0;
 //currentUser();
@@ -604,12 +605,35 @@ function currentUser(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             console.log("You are logged in");
+            checkBattle(battleId);
         } else {
             window.location.href = "http://localhost:7000/signup.html";
         }
       });
 }
+function checkBattle(battleId){
+    if(battleId){
+    var docRef = db.collection("Battles").doc(battleId);
+
+docRef.get().then(function(doc) {
+    if (doc.exists) {
+       var bData = doc.data();
+       var updatescore = bData.Score;
+       if(updatescore){
+           alert("You have already finished playing this game");
+           window.location.href = 'http://localhost:7000/battle.html?battleId='+battleId+'';
+        }
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+    }
+}
 function onGameStart(){
+    if(gameId){
     var docRef = db.collection("TournamentUser").doc(gameId);
 
             docRef.get().then(function(doc) {
@@ -624,6 +648,7 @@ function onGameStart(){
         }).catch(function(error) {
             console.log("Error getting document:", error);
         });
+    }
 }
 
 
@@ -2195,7 +2220,8 @@ function CGame(b) {
         stopSound("soundtrack");
         m.createEndPanel(J);
         console.log(J);
-        if(J > lastscore ){
+        // update score if it is a tournament
+        if(gameId && J > lastscore ){
             db.collection("TournamentUser").doc(gameId).update({
                 Score: J,
                 timeStamp: timeStamp
@@ -2209,6 +2235,19 @@ function CGame(b) {
         }
         else {
             console.log("Game score is not highest");
+        }
+        // update score if it is a battle
+        if(battleId){
+            db.collection("Battles").doc(battleId).update({
+                Score: J,
+                timeStamp: timeStamp
+            })
+            .then(function() {
+                window.location.href = 'http://localhost:7000/battle.html?battleId='+battleId+'';
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
         }
     };
     this.onDieEnemySnake = function (a) {

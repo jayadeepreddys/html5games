@@ -56,13 +56,14 @@ function checkStatus(){
        }
        if(status === 0){
         console.log(" No player found");
-        $("#opponent").text( 'No Opponent found. Try after sometime');
+        $("#opponent").text( 'Try Again');
        }
        if(playerscore > 0){
         $("#opponent").text( 'Game Completed. Waiting for Oponent score');
         $(".afterBattle").show();
         $("#load-wrapper").hide();
         $("#playerscore").text(playerscore);
+        $("#tip").text('Once the opponent score is updated winner will be declared');
         //updateScores();
        }
     });
@@ -89,9 +90,12 @@ function opponentScore(opponentId){
       console.log(playerscore, opponentscore);
    if(playerscore > opponentscore){
     $("#result").text("You Won");
+    $("#tip").text('Hurray!! Keep winning');
+
    }
    else {
     $("#result").text("You Lost");
+    $("#tip").text('You shoud win this time! Try Again');
    }
   }
 
@@ -105,3 +109,14 @@ function retryBattle(){
         })
         console.log("Added to Queue");
 }
+function sleep(millis) {
+    return new Promise(resolve => setTimeout(resolve, millis));
+  }
+  function goToHome(){
+    window.location.href = "http://localhost:7000/home.html";
+
+  }
+  function playAgain(){
+    window.location.href = 'http://localhost:7000/challenges.html?challengeId='+challengeId+'';
+
+  }
