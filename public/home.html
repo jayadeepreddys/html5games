@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-firestore.js"></script>
+
+    <script src="auth.js"> </script>
+    <script src="home.js"> </script>
+</head>
+
+<body style="padding-top: 11%;font-family: Poppins,sans-serif; background-color: rgb(243, 243, 243);">
+    <div class="demo"></div>
+    <div id="portalNav" class="fi2jvha">
+        <div class="fdacjj2">
+            <!-- sidenav -->
+            <div id="mySidenav" class="sidenav">
+                <header>
+                </header>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="avt_box">
+                    <div class="avt_img">
+                        <img src="https://static.gamezop.com/placeholders/avatar-2.jpg" alt="avatar">
+                    </div>
+
+                    <div class="avt_body">
+                        <p id="name">Reddy</p>
+                    </div>
+                </div>
+                <div class="dgn_nav_points">
+                    <a id="sidebarWithdraw" class="fflrbt6" href="withdraw-cash.html">
+                        <div class="fmn8x67">
+                            <div class="f1efquwu">Winnings Balance</div>
+                            <div class="fddsvlq">
+                                <div class="fn5go5s">
+                                    <img src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"
+                                        alt="">
+                                </div>
+                                <div id="walletbalance" class="fgtyo0p">..</div>
+                            </div>
+                        </div>
+                        <div class="f1vou0gj" href="withdraw-cash.html">Withdraw</div>
+                    </a>
+                    <a id="sidebarDeposit" class="fflrbt6" href="payments.html">
+                        <div class="fmn8x67">
+                            <div class="f1efquwu">Deposit &amp; Promo Balance</div>
+                            <div class="fddsvlq">
+                                <div class="fn5go5s"><img
+                                        src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"
+                                        alt=""></div>
+                                <div id="walletbalance" class="fgtyo0p">..</div>
+                            </div>
+                        </div>
+                        <div class="f1vou0gj" href="payments.html">Add</div>
+                    </a>
+
+                </div>
+
+
+                <div class="dgn_nav">
+                    <a href="home.html">Home</a>
+                    <a href="orderhistory.html">Game History</a>
+                    <a href="freegame.html">Free Games</a>
+                    <a onclick="logout()">Logout</a>
+                </div>
+            </div>
+
+            <!-- Use any element to open the sidenav -->
+            <picture class="fc39scl" onclick="openNav()">
+                <source class="f1mgyl9u" type="image/webp"
+                    srcset="https://static.gamezop.com/peach/assets/img/xxl/hamburger-2.webp">
+                <source class="f1mgyl9u" type="image/png"
+                    srcset="https://static.gamezop.com/peach/assets/img/xxl/hamburger-2.png">
+                <img id="hamburgeImg" class="fpvt2jk" src="https://static.gamezop.com/peach/assets/img/hamburger-2.png"
+                    alt="menu">
+            </picture>
+
+            <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+            <div id="main">
+            </div>
+        </div>
+
+        <div class="f306i2h"></div>
+        <div class="fod5rt6">
+            <a class="f18z1uyv" href="payments.html">
+                <div class="ftw1wr0">
+                    <img src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt="">
+                </div>
+                <div class="foh645m">
+                    <div class="f1bw7g3l">Cash</div>
+                    <div id="walletbalance" class="f1lwx3tj">..</div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Game card -->
+    <div class="games">
+       <!--  <div class="f1yhyggr">
+            <div class="gamename">
+                <img id="gameIMG" class="gameImg"
+                    src='data:image/jpeg;base64,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'
+                    alt="game card">
+            </div>
+            <div class="gamename_1">
+                <span class="game_name_txt">stack overflow hidden </span>
+            </div>
+
+            <div class='+data[0].gameName+'></div>
+        </div> -->
+    </div>
+</body>
+
+</html>

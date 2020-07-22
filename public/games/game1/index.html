@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Tower Blocks</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<meta name="viewport" content="width=device-width,user-scalable=no">
+
+<div id="container">
+	<div id="game"></div>
+	<div id="score">0</div>
+	<div id="instructions">Click to place the block</div>
+	<div class="game-over">
+		<h2>Game Over</h2>
+		<p>You did great, you're the best.</p>
+		<p>Click  to start again</p>
+	</div>
+	<div class="game-ready">
+		<div onclick="goFullScreen()" id="start-button">Start</div>
+		<div></div>
+	</div>
+</div>
+<!-- partial -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-firestore.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script><script  src="./script.js"></script>
+<script>
+	// TODO: Replace the following with your app's Firebase project configuration
+	var firebaseConfig = {
+    apiKey: "AIzaSyCDMtEUQspGxiE_rR_Z1-v2MyMUr8MOVY8",
+    authDomain: "moneygames-56fe2.firebaseapp.com",
+    databaseURL: "https://moneygames-56fe2.firebaseio.com",
+    projectId: "moneygames-56fe2",
+    storageBucket: "moneygames-56fe2.appspot.com",
+    messagingSenderId: "675519415495",
+    appId: "1:675519415495:web:7b233b918172c299946ae2",
+    measurementId: "G-XFX68V4K6K"
+  };
+
+	// Initialize Firebase
+	var app = firebase.initializeApp(firebaseConfig);
+	var db;
+	//var app = firebase.initializeApp(firebaseConfig);
+   db = firebase.firestore(app);
+</script>
+</body>
+</html>
