@@ -22,10 +22,32 @@ function currentUser(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             console.log("You are logged in");
+            checkBattle(battleId);
         } else {
-            window.location.href = "http://localhost:7000/signup.html";
+            window.location.href = 'http://localhost:7000/signup.html';
         }
       });
+}
+function checkBattle(battleId){
+    if(battleId){
+    var docRef = db.collection("Battles").doc(battleId);
+
+docRef.get().then(function(doc) {
+    if (doc.exists) {
+       var bData = doc.data();
+       var updatescore = bData.Score;
+       if(updatescore){
+           alert("You have already finished playing this game");
+           window.location.href = 'http://localhost:7000/battle.html?battleId='+battleId+'';
+        }
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+    }
 }
 
 
@@ -41,6 +63,7 @@ let timeStamp = new Date();
 //let scoreId = mobile.concat(tournamentId);
 var lastscore = 0;
 //console.log(scoreId);
+
 
 //console.log(user);
 var Stage = /** @class */ (function () {
