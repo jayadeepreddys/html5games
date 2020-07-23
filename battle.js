@@ -48,6 +48,8 @@ function checkStatus(){
        console.log(gameUrl);
        if(opponentId){
          console.log(" I am matched with a user. Proceed to play");
+         $("#retry").hide();
+         $("#label_try").hide();
          $("#opponent").text( 'Opponent Matched');
          opponentScore(opponentId);
        }
@@ -57,14 +59,17 @@ function checkStatus(){
        if(status === 0){
         console.log(" No player found");
         $("#opponent").text( 'Try Again');
-       }
+        $("#load-wrapper").hide();
+        $("#retry").show()
+       
+      }
        if(playerscore > 0){
         $("#opponent").text( 'Game Completed. Waiting for Oponent score');
         $(".afterBattle").show();
         $("#load-wrapper").hide();
         $("#playerscore").text(playerscore);
         $("#tip").text('Once the opponent score is updated winner will be declared');
-        //updateScores();
+        
        }
     });
   }

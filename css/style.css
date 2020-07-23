@@ -1864,6 +1864,8 @@ img.man_img {
   top: 66%;
 }
 
+
+
 p {
   color: #d0cade;
   font-size: .889em;
@@ -1955,6 +1957,17 @@ h2 {
     .rules{
       text-align: center;
     }
+
+/* battle retry button */
+
+div#retry {
+  margin: 50% 25% 25% 25%;
+}
+.label_try{
+position: relative;
+top: 66%;
+}
+
   
 
 
