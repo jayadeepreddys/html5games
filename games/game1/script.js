@@ -24,7 +24,7 @@ function currentUser(){
             console.log("You are logged in");
             checkBattle(battleId);
         } else {
-            window.location.href = 'signup.html';
+            window.location.href = 'https://moneygames.app/signup.html';
         }
       });
 }
@@ -399,7 +399,7 @@ var Game = /** @class */ (function () {
                 timeStamp: timeStamp
             })
             .then(function() {
-                window.location.href = 'battle.html?battleId='+battleId+'';
+                window.location.href = 'https://moneygames.app/battle.html?battleId='+battleId+'';
             })
             .catch(function(error) {
                 console.error("Error writing document: ", error);
