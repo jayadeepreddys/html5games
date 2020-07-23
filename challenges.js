@@ -17,6 +17,7 @@ $( document ).ready(function() {
    getChallenge(challengeId);
    playersOnline();
    
+
   
 });
 
@@ -112,7 +113,8 @@ function closeNav() {
 
 function joinGame(){
   if(walletBalance >= gameData.entryFee){
-   
+    goFullScreen();
+
         db.collection('Battles').add(
           {
              
@@ -150,7 +152,6 @@ function joinGame(){
       else{
         alert('Your wallet balance is low. Please recharge');
       }
-     
        
   }
 function preLoad(battleId){
@@ -172,7 +173,7 @@ function checkStatus(){
 
   
 function playersOnline(){
-  db.collection("ChallengeQueue").where("challengeId", "==", challengeId)
+  db.collection("ChallengeQueue")
     .onSnapshot(function(querySnapshot) {
         var challenges = [];
         querySnapshot.forEach(function(doc) {
@@ -187,6 +188,23 @@ function logout(){
   firebase.auth().signOut();
 }
  
+function requestFullScreen(element) {
+  // Supports most browsers and their versions.
+  var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
 
+  if (requestMethod) { // Native full screen.
+      requestMethod.call(element);
+  } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+      var wscript = new ActiveXObject("WScript.Shell");
+      if (wscript !== null) {
+          wscript.SendKeys("{F11}");
+      }
+  }
+}
+function goFullScreen() {
+  var elem = document.body;
+  console.log(elem);
+  requestFullScreen(elem);
+}
 
   

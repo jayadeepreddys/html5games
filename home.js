@@ -71,6 +71,10 @@ function getTournaments(gameId) {
       for (var i = 0; i < data.length; i++) {
         var gamename = data[0].gameName;
         var endtime = data[i].endTime.toDate();
+        var entryFee = data[i].entryFee;
+        if(entryFee === 0){
+          data[i].entryFee ='FREE'
+        }
         //var endtime = moment(endtime).endOf('day').fromNow();
         //var currentTime= moment().format()
        // var endtime = moment(endtime).format("HH:mm");
