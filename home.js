@@ -23,7 +23,7 @@ function currentUser() {
       getWallet();
 
     } else {
-      window.location.href = "http://localhost:7000/signup.html";
+      window.location.href = "signup.html";
     }
   });
 }
@@ -77,7 +77,7 @@ function getTournaments(gameId) {
         var endtime = moment(endtime).calendar();
         console.log(endtime);
 
-        $("." + gamename + '').append('<a class="" href="http://localhost:7000/tournament.html?tournamentId=' + data[i].tournamentId + '"><div class="f1ma0gg7"><div class="contestCardDeposit500" style="display: flex; height: 100%; position: relative;"><div class="f1ylnkmr"><div class="fshmzbu">Prize</div><div class="f1wmjatj"><img class="fpliu47"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt=""><spanstyle="margin-left: 7px;">' + data[i].Prize + '</span></div></div><div class="f1tq6dag" style="left: 30%;"><div class="f1mvdm5l" style="padding-top: 3px;"><img class="f1hn91pk"src="https://static.gamezop.com/peach/assets/img/faceless-player.svg" alt=""><div class="f1omk9ww">' + data[i].joined + ' <span style="padding-left: 2px; padding-right: 2px;">/</span>' + data[i].maxLimit + ' </div></div><div class="f1mvdm5l" style="padding-left: 0px; padding-bottom: 0px;"><img class="f1n7oroy"src="https://static.gamezop.com/peach/assets/img/timer.svg" alt=""><div class="clock_img">Ends ' + endtime + '</div></div></div><div class="f1dfiwkb"><img class="fo34vq9" src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt=""><span>' + data[i].entryFee + '</span></div></div></div><a>');
+        $("." + gamename + '').append('<a class="" href="tournament.html?tournamentId=' + data[i].tournamentId + '"><div class="f1ma0gg7"><div class="contestCardDeposit500" style="display: flex; height: 100%; position: relative;"><div class="f1ylnkmr"><div class="fshmzbu">Prize</div><div class="f1wmjatj"><img class="fpliu47"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt=""><spanstyle="margin-left: 7px;">' + data[i].Prize + '</span></div></div><div class="f1tq6dag" style="left: 30%;"><div class="f1mvdm5l" style="padding-top: 3px;"><img class="f1hn91pk"src="https://static.gamezop.com/peach/assets/img/faceless-player.svg" alt=""><div class="f1omk9ww">' + data[i].joined + ' <span style="padding-left: 2px; padding-right: 2px;">/</span>' + data[i].maxLimit + ' </div></div><div class="f1mvdm5l" style="padding-left: 0px; padding-bottom: 0px;"><img class="f1n7oroy"src="https://static.gamezop.com/peach/assets/img/timer.svg" alt=""><div class="clock_img">Ends ' + endtime + '</div></div></div><div class="f1dfiwkb"><img class="fo34vq9" src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt=""><span>' + data[i].entryFee + '</span></div></div></div><a>');
       }
       $('.demo').hide();
     }
@@ -116,7 +116,7 @@ function getChallenges(){
     });
     for(j=0;j<challengedata.length;j++){
       var gamename = challengedata[j].gameName;
-      $("." + gamename + '').append('<a class="" href="http://localhost:7000/challenges.html?challengeId=' + challengedata[j].challengeId + '"><div class="f1ma0gg7"><div class="contestCardDeposit500" style="display: flex; height: 100%; position: relative;"><div class="f1ylnkmr"><div class="fshmzbu">Prize</div><div class="f1wmjatj"><img class="fpliu47"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt=""><spanstyle="margin-left: 7px;">' + challengedata[j].prize + '</span></div></div><div class="f1tq6dag" style="left: 30%;"><div class="f1mvdm5l" style="padding-top: 3px;"><img class="battle_img_home"src="icons/battle_home.png" alt=""></div><div class="f1mvdm5l" style="padding-left: 0px; padding-bottom: 0px;"><div class="battle_txt_home">2 Player Battle</div></div></div><div class="f1dfiwkb"><img class="fo34vq9" src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt=""><span>' + challengedata[j].entryFee + '</span></div></div></div><a>');
+      $("." + gamename + '').append('<a class="" href="challenges.html?challengeId=' + challengedata[j].challengeId + '"><div class="f1ma0gg7"><div class="contestCardDeposit500" style="display: flex; height: 100%; position: relative;"><div class="f1ylnkmr"><div class="fshmzbu">Prize</div><div class="f1wmjatj"><img class="fpliu47"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt=""><spanstyle="margin-left: 7px;">' + challengedata[j].prize + '</span></div></div><div class="f1tq6dag" style="left: 30%;"><div class="f1mvdm5l" style="padding-top: 3px;"><img class="battle_img_home"src="icons/battle_home.png" alt=""></div><div class="f1mvdm5l" style="padding-left: 0px; padding-bottom: 0px;"><div class="battle_txt_home">2 Player Battle</div></div></div><div class="f1dfiwkb"><img class="fo34vq9" src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg" alt=""><span>' + challengedata[j].entryFee + '</span></div></div></div><a>');
     }
  
   }).catch(function (error) {

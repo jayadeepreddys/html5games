@@ -13,7 +13,7 @@ function currentUser() {
             mobile = user.phoneNumber;
             UserNotifcation();
         } else {
-            window.location.href = "http://localhost:7000/signup.html";
+            window.location.href = "signup.html";
         }
     });
 }

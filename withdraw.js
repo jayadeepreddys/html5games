@@ -24,7 +24,7 @@ function currentUser(){
          getWallet();
          $(".pay_btn").hide();
         } else {
-            window.location.href = "http://localhost:7000/signup.html";
+            window.location.href = "signup.html";
         }
       });
 }
@@ -88,7 +88,7 @@ function withdraw(){
     })
     .then(function(docRef) {
         alert("Withdrwal Requested. Allow upto 24hrs to process payment");
-        window.location.href = "http://localhost:7000/home.html";
+        window.location.href = "home.html";
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);

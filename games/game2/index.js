@@ -11,7 +11,7 @@ function currentUser(){
         if (user) {
             console.log("You are logged in");
         } else {
-            window.location.href = "http://localhost:7000/signup.html";
+            window.location.href = "signup.html";
         }
       });
 }

@@ -47,7 +47,7 @@ function currentUser(){
        $(".cancelled").hide();
          
         } else {
-            window.location.href = "http://localhost:7000/signup.html";
+            window.location.href = "signup.html";
         }
       });
 }
@@ -154,7 +154,7 @@ function joinGame(){
        
   }
 function preLoad(battleId){
-  window.location.href = 'http://localhost:7000/battle.html?battleId='+battleId+'';
+  window.location.href = 'battle.html?battleId='+battleId+'';
 }
 function checkStatus(){
   console.log("Matching with a user");

@@ -29,7 +29,7 @@ function currentUser(){
          checkStatus();
          
         } else {
-            window.location.href = "http://localhost:7000/signup.html";
+            window.location.href = "signup.html";
         }
       });
 }
@@ -113,10 +113,10 @@ function sleep(millis) {
     return new Promise(resolve => setTimeout(resolve, millis));
   }
   function goToHome(){
-    window.location.href = "http://localhost:7000/home.html";
+    window.location.href = "home.html";
 
   }
   function playAgain(){
-    window.location.href = 'http://localhost:7000/challenges.html?challengeId='+challengeId+'';
+    window.location.href = 'challenges.html?challengeId='+challengeId+'';
 
   }

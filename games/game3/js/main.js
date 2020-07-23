@@ -607,7 +607,7 @@ function currentUser(){
             console.log("You are logged in");
             checkBattle(battleId);
         } else {
-            window.location.href = "http://localhost:7000/signup.html";
+            window.location.href = "signup.html";
         }
       });
 }
@@ -621,7 +621,7 @@ docRef.get().then(function(doc) {
        var updatescore = bData.Score;
        if(updatescore){
            alert("You have already finished playing this game");
-           window.location.href = 'http://localhost:7000/battle.html?battleId='+battleId+'';
+           window.location.href = 'battle.html?battleId='+battleId+'';
         }
     } else {
         // doc.data() will be undefined in this case
@@ -2243,7 +2243,7 @@ function CGame(b) {
                 timeStamp: timeStamp
             })
             .then(function() {
-                window.location.href = 'http://localhost:7000/battle.html?battleId='+battleId+'';
+                window.location.href = 'battle.html?battleId='+battleId+'';
             })
             .catch(function(error) {
                 console.error("Error writing document: ", error);

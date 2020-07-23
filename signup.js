@@ -13,7 +13,7 @@ function currentUser(){
          
           var uid = user.uid;
          console.log(uid);
-         window.location.href = "http://localhost:7000/home.html";
+         window.location.href = "home.html";
         } else {
             
         }
@@ -72,7 +72,7 @@ function loadRecaptcha() {
       // User signed in successfully.
       var user = result.user;
       console.log(user);
-      window.location.href = "http://localhost:7000/home.html";
+      window.location.href = "home.html";
       // ...
     }).catch(function (error) {
       // User couldn't sign in (bad verification code?)
