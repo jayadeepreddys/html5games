@@ -1961,11 +1961,19 @@ h2 {
 /* battle retry button */
 
 div#retry {
-  margin: 50% 25% 25% 25%;
+  margin: 50% 33% 40% 33%;
 }
 .label_try{
 position: relative;
 top: 66%;
+}
+.btn_circle {
+  display:block;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 1px solid red;
+  
 }
 
   
