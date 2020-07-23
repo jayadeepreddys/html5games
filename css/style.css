@@ -1860,8 +1860,8 @@ img.man_img {
 }
 
 #label {
-  position: relative;
-  top: 66%;
+  position: fixed;
+  margin: 18px 73px 20px 73px;
 }
 
 
@@ -1914,7 +1914,7 @@ h2 {
     p.txt_user {
       text-align: center;
       color: white;
-      font-size: larger;
+      font-size: 16px;
   }
   .row {
      margin-top: 15%;
@@ -1975,6 +1975,7 @@ top: 66%;
   border: 1px solid red;
   
 }
+
 
   
 

@@ -65,7 +65,7 @@ function checkStatus() {
       }
      
       if (playerscore > 0) {
-        $("#opponent").text('Game Completed. Waiting for Oponent score');
+        $("#label").hide();
         $(".afterBattle").show();
         $("#load-wrapper").hide();
         $("#retry").hide();
