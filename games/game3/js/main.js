@@ -607,7 +607,7 @@ function currentUser(){
             console.log("You are logged in");
             checkBattle(battleId);
         } else {
-            window.location.href = "signup.html";
+            window.location.href = "https://moneygames.app/signup.html";
         }
       });
 }
@@ -621,7 +621,7 @@ docRef.get().then(function(doc) {
        var updatescore = bData.Score;
        if(updatescore){
            alert("You have already finished playing this game");
-           window.location.href = 'battle.html?battleId='+battleId+'';
+           window.location.href = 'https://moneygames.app/battle.html?battleId='+battleId+'';
         }
     } else {
         // doc.data() will be undefined in this case
