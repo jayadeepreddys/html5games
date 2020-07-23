@@ -113,7 +113,6 @@ function closeNav() {
 
 function joinGame(){
   if(walletBalance >= gameData.entryFee){
-    goFullScreen();
 
         db.collection('Battles').add(
           {
@@ -188,23 +187,6 @@ function logout(){
   firebase.auth().signOut();
 }
  
-function requestFullScreen(element) {
-  // Supports most browsers and their versions.
-  var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
 
-  if (requestMethod) { // Native full screen.
-      requestMethod.call(element);
-  } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
-      var wscript = new ActiveXObject("WScript.Shell");
-      if (wscript !== null) {
-          wscript.SendKeys("{F11}");
-      }
-  }
-}
-function goFullScreen() {
-  var elem = document.body;
-  console.log(elem);
-  requestFullScreen(elem);
-}
 
   
