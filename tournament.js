@@ -15,7 +15,9 @@ $( document ).ready(function() {
    let searchParams = new URLSearchParams(window.location.search);
    tournamentId = searchParams.get('tournamentId');
    console.log(tournamentId);
-   
+   $(".board").hide();
+     $("#cancelled").hide();
+     $(".f1am1fq4").hide();
   
 });
 
@@ -43,7 +45,8 @@ function currentUser(){
          console.log(uid);
        //  getTournaments();
       // $(".f1am1fq4").hide();
-       $(".cancelled").hide();
+     //  $(".cancelled").hide();
+     
          
         } else {
             window.location.href = "http://localhost:7000/signup.html";
@@ -147,9 +150,9 @@ function getTournaments(id){
            status = data.status;
             console.log(status);
            
-           if(joined < minUsers){
+          /*  if(joined < minUsers){
             $(".board").hide();
-           }
+           } */
            if(minUsers === 3){
              var rankLength = 1;
              var range1 = "1";
@@ -223,14 +226,6 @@ function getTournaments(id){
         }
         
        
-         /*  if(status === 1){
-            console.log("Game completed");
-            $(".f1am1fq4").hide();
-          }
-           if(status === 1){
-             console.log("cancelled");
-            $(".cancelled").show();
-          }  */
        
             
         });
@@ -277,10 +272,23 @@ function goToGame(){
 }
   function leaderBoard(tourdata){
     console.log(data.status)
-  if(tourdata.length > 0 && data.status === 1){
+   
+  if(tourdata.length > 0){
+    $(".board").show();
     for(var i=0;i<tourdata.length;i++ )
   $(".minprizes").append('<div class="f1d4a11x"><div class="f1mi6qxz">'+tourdata[i].name+'</div><span class="fkhz08q" style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><span>'+tourdata[i].Score+'</span></div></span><span class="fkhz08q" style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 177px;"><span>'+(i+1)+'</span></div></span></div>');
   }
+  if(data.status === 1){
+    console.log("Game completed");
+    $(".f1am1fq4").hide();
+  }
+  if(data.status === 2){
+    console.log("Game Cancelled");
+    $(".f1am1fq4").hide();
+    $("#cancelled").show();
+  }
+
+
   
 } 
 function logout(){

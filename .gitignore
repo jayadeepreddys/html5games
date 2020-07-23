@@ -27,7 +27,8 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
-
+# firebase public folder
+public
 # nyc test coverage
 .nyc_output
 
