@@ -7,6 +7,7 @@ $( document ).ready(function() {
    currentUser();
    currentdate = new Date();
    console.log(currentdate);
+   $(".minamount").hide();   
    
 });
 function currentUser(){
@@ -50,6 +51,11 @@ $("#walletInput").keyup(function(){
     }
     if(!amount){
         $(".pay_btn").hide();   
+    }
+    if(amount< 9){
+        $(".pay_btn").hide();  
+        $(".minamount").show();    
+
     }
   });
 }
