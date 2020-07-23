@@ -100,9 +100,13 @@ function declareWinner() {
     $("#tip").text('Hurray!! Keep winning');
 
   }
-  else {
+  if (playerscore < opponentscore){
     $("#result").text("You Lost");
     $("#tip").text('You shoud win this time! Try Again');
+  }
+  if (playerscore === opponentscore){
+    $("#result").text("Game Draw");
+    $("#tip").text('You were close! Try Again');
   }
 }
 
