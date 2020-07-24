@@ -50,7 +50,7 @@ docRef.get().then(function(doc) {
 }
 
 function fbScoreUpdater(){
-    if(gameId && this.SCORE > lastscore ){
+    if(gameId && game.SCORE > lastscore ){
         db.collection("TournamentUser").doc(gameId).update({
             Score: this.blocks.length-1,
             timeStamp: timeStamp
