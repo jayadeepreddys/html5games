@@ -67,7 +67,7 @@ function fbScoreUpdater(){
     }   
     if(battleId){
         db.collection("Battles").doc(battleId).update({
-            Score: this.blocks.length-1,
+            Score: game.SCORE,
             timeStamp: timeStamp
         })
         .then(function() {
