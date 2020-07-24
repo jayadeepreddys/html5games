@@ -132,7 +132,7 @@ async function retryBattle() {
       'userId': userid,
       'battleId': battleId
     })
-   // pageReload()
+    pageReload()
   }
    
   
