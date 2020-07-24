@@ -1882,81 +1882,133 @@ h2 {
   text-align: center;
 }
 /* after game */
-
-  .battle_logo_img {
-      text-align: center;
-  }
-  img.main_ballte_img {
-      width: 25%;
-  }
-  p.battle_icon_txt {
-   color: white;
-    font-weight: 600;
-    font-size: 22px;
-}
-  img {
-      max-width: 100%;
-      height: auto;
-      vertical-align: top;
-  }
- 
-  .column1 {
-      float: left;
-      width: 33.33%;
-      padding: 5px;
+ @media  screen and (max-width: 414px){
+    .footer_btn {
+      margin-top: 16% !important;
     }
-    .column2 {
-      float: right;
-      width: 33.33%;
-      padding: 5px;
+    .text {
+      margin-top: 72% !important;
     }
-  
-    p.txt_user {
-      text-align: center;
-      color: white;
-      font-size: 16px;
-  }
+   
+} 
+@media  screen and (max-width: 320px)
+{
   .row {
-     margin-top: 15%;
+    margin-top: 0% !important;
   }
-  .text{
-      text-align: center;
-      margin-top: 90%;
+  .footer_btn {
+    margin-top: 0% !important;
   }
-  .result{
-      color: white;
-      font-size: 25px;
-  }
-  .motivation{
-      color: white;
-      font-size: 19px;
-  }
-  .btn {
-      background-color: #3e51b5;
-      border: none;
-      color: white;
-      padding: 12px 16px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .footer_btn{
-        margin-top: 20%;
-    }
+  .text {
+    margin-top: 77% !important;
+ }
+  .motivation {
   
-    .block {
-      display: block;
-      width: 100%;
-      border: none;
-      background-color:#3e51b5;
-      color: white;
-      padding: 14px 28px;
-      font-size: 16px;
-      cursor: pointer;
-      text-align: center;
-    }
-    .rules{
-      text-align: center;
-    }
+    font-size: 13px !important;
+  }
+  p.txt_user 
+  {
+  font-size: 13px !important;
+  }
+  .result 
+  {
+   font-size: 14px !important;
+  }
+} 
+@media  screen and (max-width: 375px)
+{
+  .footer_btn {
+    margin-top: 10% !important;
+}
+
+  .row 
+  {
+    margin-top: 10%;
+  }
+  p.txt_user 
+  {
+    font-size: 14px !important;
+  }
+  .text {
+    margin-top: 69% !important;
+}
+}
+
+
+ .battle_logo_img {
+  text-align: center !important;
+}
+img.main_ballte_img {
+  width: 25%;
+}
+p.battle_icon_txt {
+color: white;
+font-weight: 600;
+font-size: 22px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+.column1 {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+.column2 {
+  float: right;
+  width: 33.33%;
+  padding: 5px;
+}
+
+p.txt_user {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+}
+.row {
+ margin-top: 15%;
+}
+.text{
+  text-align: center;
+  margin-top: 90%;
+}
+.result{
+  color: white;
+  font-size: 25px;
+}
+.motivation{
+  color: white;
+  font-size: 19px;
+}
+.btn {
+  background-color: #3e51b5;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.footer_btn{
+    margin-top: 20%;
+}
+
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color:#3e51b5;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+.rules{
+  text-align: center;
+}
 
 /* battle retry button */
 
