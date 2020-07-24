@@ -61,10 +61,12 @@ function checkStatus() {
         $("#opponent").text('Try Again');
         $("#load-wrapper").hide();
         $("#retry").show()
-
+        $("#retry-tip").text('We will match an opponet again quickly');
+        $("#retry-tip").show();
       }
      
       if (playerscore > 0) {
+        $("#retry-tip").hide();
         $("#label").hide();
         $(".afterBattle").show();
         $("#load-wrapper").hide();
@@ -110,7 +112,19 @@ function declareWinner() {
   }
 }
 
-function retryBattle() {
+async function retryBattle() {
+  var res =await db.collection('Battles').doc(battleId).update(
+    {
+      status: firebase.firestore.FieldValue.delete()
+    })
+    .then(res=>{
+    addToQueue();
+    })
+
+}
+
+ function addToQueue(){
+  console.log("Added to Queue");
   db.collection('ChallengeQueue').doc(userid).set(
     {
       'challengeId': challengeId,
@@ -118,17 +132,9 @@ function retryBattle() {
       'userId': userid,
       'battleId': battleId
     })
-    addToQueue();
+   // pageReload()
   }
-
- function addToQueue(){
-  console.log("Added to Queue");
-  db.collection('Battles').doc(battleId).update(
-    {
-      'status':1
-    })
-    pageReload()
- }   
+   
   
  
 
