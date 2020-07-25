@@ -184,17 +184,17 @@ function getTournaments(id){
                 var range = range1;
                 var fprize = Math.round(totalPrize*0.5/rankLength);
                 var minfprize = Math.round(entryFee*joined*0.5/10);
-                $('.prizes').append( '<div id="ranks" class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
+                $('.prizes').append( '<div id="ranks" class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="icons/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
                 break;
                 case 2:
                 var range = range2;
                 var fprize = totalPrize*0.3/rankLength;
-                $('.prizes').append( '<div id="ranks" class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
+                $('.prizes').append( '<div id="ranks" class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="icons/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
                   break;
                 case 3:
                 var range = range3;
                 var fprize = Math.round(totalPrize*0.2/rankLength);
-                $('.prizes').append( '<div id="ranks" class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="https://static.gamezop.com/peach/assets/img/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
+                $('.prizes').append( '<div id="ranks" class="f1d4a11x" style="background-color: rgb(255, 255, 255); height: 40px;"><div class="f1mi6qxz">Ranks '+range+'</div><span class="fkhz08q"style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><img class=" f1xpovie"src="icons/multiple-rupee-note.svg"alt=""><span>'+fprize+'</span></div></span></div>');
   
                 break;
                 default:
