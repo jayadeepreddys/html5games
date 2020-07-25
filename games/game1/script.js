@@ -385,6 +385,7 @@ var Game = /** @class */ (function () {
             })
             .then(function() {
                 console.log("Game score updated");
+                lastscore = currentScore
             })
             .catch(function(error) {
                 console.error("Error writing document: ", error);

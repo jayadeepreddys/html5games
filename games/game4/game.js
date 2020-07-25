@@ -57,6 +57,7 @@ function fbScoreUpdater(){
         })
         .then(function() {
             console.log("Game score updated");
+           lastscore = game.SCORE
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);

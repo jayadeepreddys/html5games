@@ -2228,6 +2228,7 @@ function CGame(b) {
             })
             .then(function() {
                 console.log("Game score updated");
+                lastscore = J
             })
             .catch(function(error) {
                 console.error("Error writing document: ", error);
