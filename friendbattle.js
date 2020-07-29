@@ -19,6 +19,8 @@ $(document).ready(function () {
   console.log(mode);
   console.log(battleId);
   $(".afterBattle").hide();
+  $("#accept").hide();
+  $("#hide").hide();
   getMode();
   
 
@@ -48,20 +50,20 @@ function currentUser() {
   });
 }
 function getMode(){
-  console.log('entered eet mode');
   if(mode == 1){
-    console.log("ented loop"+mode)
-  checkStatus(battleId);
-  $("#accept").hide();
-  $("#invite").show();
-  generateUrl()
- 
+    $("#invite").hide();
+    checkStatus(battleId);
+    generateUrl()
+  
 
   } 
   if(mode == 2){
   //  createBattle();
   $("#invite").hide();
-  $("#accept").show();
+  console.log("Mode 2")
+  $("#opponent").text('Join & Play With Freind');
+  $("#retry-tip").text('Make sure your friend is online');
+
   getData();
   }
 }
@@ -88,12 +90,15 @@ function getData(){
     if (doc.exists) {
       console.log(doc.data());
       gameData = doc.data();
+      $("#accept").show();
+
     } else {
       // doc.data() will be undefined in this case
     }
   }).catch(function (error) {
     console.log("Error getting document:", error);
   });
+
 }
 
 function checkStatus(gameId) {
@@ -110,22 +115,17 @@ function checkStatus(gameId) {
       console.log(gameUrl);
       if (opponentId) {
         console.log(" I am matched with a user. Proceed to play");
+        $("#accept").hide();
         $("#label_try").hide();
         $("#opponent").text('Friend Matched');
-        opponentScore(opponentId);
+       // opponentScore(opponentId);
       }
       if (opponentId && !playerscore) {
         window.location.href = gameUrl + '?battleId=' + gameId + '';
       }
      
       if (playerscore > 0) {
-        $("#label").hide();
-        $(".afterBattle").show();
-        $("#load-wrapper").hide();
-        $("#playerscore").text(playerscore);
-        $("#tip").text('Once the opponent score is updated winner will be declared');
-        $("#invite").hide();
-        $("#accept").hide();
+        window.location.href = 'https://moneygames.app/battle.html?battleId=' + gameId + '';
 
       }
     });
@@ -143,7 +143,7 @@ function createBattle(){
             'challengeId' :gameData.challengeId,
             'userId': userid,
             'name': userName,
-             'Prize': gameData.prize,
+             'Prize': gameData.Prize,
              'gameUrl': gameData.gameUrl,
              'opponent': battleId
           })
@@ -224,7 +224,7 @@ function inviteFreind(){
 }
 
 function generateUrl(){
-  var string = encodeURIComponent("http://localhost:7000/friendbattle.html?battleId="+battleId+'&mode=2');
+  var string = encodeURIComponent("http://localhost:5000/friendbattle.html?battleId="+battleId+'&mode=2');
   var params = {
   "longDynamicLink": "https://mgame.page.link/?link="+string,
   "suffix": {
@@ -239,6 +239,7 @@ function generateUrl(){
   success: function (response) {
   surl  = response.shortLink;
   console.log(surl);
+  $("#invite").show();
   },
   error: function () {
   alert("error");
