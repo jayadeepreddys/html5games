@@ -138,7 +138,6 @@ function joinGame() {
           })
         console.log("Added to Queue");
         preLoad(battleId);
-        Paly_With_friends(battleId)
       })
       .catch(function (error) {
         // The document probably doesn't exist.
