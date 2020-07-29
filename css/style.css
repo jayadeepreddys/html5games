@@ -2142,7 +2142,11 @@ button.friends_btn {
   color: white;
   border-radius: 7px;
 }
-
+/* fiends battle */
+div#friends_label {
+  position: fixed;
+  margin: 100% 16% 52% 18%;
+}
   
 
 

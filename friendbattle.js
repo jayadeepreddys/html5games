@@ -8,18 +8,23 @@ var opponentScore;
 var mode;
 var userName;
 var gameData;
+var surl;
 $(document).ready(function () {
   console.log("ready!");
-  currentUser();
   currentdate = new Date();
   console.log(currentdate);
   let searchParams = new URLSearchParams(window.location.search);
   battleId = searchParams.get('battleId');
   mode = searchParams.get('mode');
+  console.log(mode);
   console.log(battleId);
   $(".afterBattle").hide();
+  getMode();
+  
 
+ 
 });
+currentUser();
 function currentUser() {
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -35,23 +40,30 @@ function currentUser() {
       mobile = user.phoneNumber;
       console.log(mobile);
       getWallet();
-      if(!mode){
-      checkStatus(battleId);
-      $("#invite").show();
-      $("#accept").hide();
+    }
 
-      } 
-      else {
-      //  createBattle();
-      $("#invite").hide();
-      $("#accept").show();
-      getData();
-      }
-
-    } else {
+     else {
       window.location.href = "signup.html";
     }
   });
+}
+function getMode(){
+  console.log('entered eet mode');
+  if(mode == 1){
+    console.log("ented loop"+mode)
+  checkStatus(battleId);
+  $("#accept").hide();
+  $("#invite").show();
+  generateUrl()
+ 
+
+  } 
+  if(mode == 2){
+  //  createBattle();
+  $("#invite").hide();
+  $("#accept").show();
+  getData();
+  }
 }
 function getWallet() {
   var balRef = db.collection("Users").doc(userid);
@@ -206,3 +218,30 @@ function playAgain() {
   window.location.href = 'challenges.html?challengeId=' + challengeId + '';
 
 }
+function inviteFreind(){
+  var str1= "https://wa.me/?text=Hey, I am playing fun game.Click on this link and play with me "+surl;
+  window.location.href = str1;
+}
+
+function generateUrl(){
+  var string = encodeURIComponent("http://localhost:7000/friendbattle.html?battleId="+battleId+'&mode=2');
+  var params = {
+  "longDynamicLink": "https://mgame.page.link/?link="+string,
+  "suffix": {
+  "option": "SHORT"
+  }
+  }
+  $.ajax({
+  url: 'https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=AIzaSyCDMtEUQspGxiE_rR_Z1-v2MyMUr8MOVY8',
+  type: 'POST',
+  data: JSON.stringify(params) ,
+  contentType: "application/json",
+  success: function (response) {
+  surl  = response.shortLink;
+  console.log(surl);
+  },
+  error: function () {
+  alert("error");
+  }
+  });
+  }

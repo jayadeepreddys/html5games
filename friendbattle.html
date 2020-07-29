@@ -36,48 +36,15 @@
             <span class="ball"></span>
         </div>
     </div>
-    
-    <div id="label">
+    <div id="friends_label">
         <h2 id="opponent">Invite Friend</h2>
-        <p id="retry-tip">Only Freinds with this link can play with yoy</p>
-    </div>
-
-
-    <div class="afterBattle">
-        <div class="button_home">
-            <button onclick="goToHome()" class="btn"><i class="fa fa-home"></i> Home</button>
-        </div>
-        <div class="battle_logo_img">
-            <img src="icons/knight.png" alt="Italian Trulli" class="main_ballte_img">
-            <p class="battle_icon_txt">Money Games Battle</p>
-        </div>
-        <div class="row">
-            <div class="column1">
-                <img src="icons/man.png" alt="Italian Trulli" class="player">
-                <p class="txt_user">You</p>
-                <p id="playerscore" class="txt_user">1</p>
-            </div>
-            <div class="column2">
-                <img src="icons/man.png" alt="Italian Trulli" class="player_2">
-                <p id="opponentname" class="txt_user">Opp</p>
-                <p id="opponentscore" class="txt_user">..</p>
-            </div>
-        </div>
-        <div class="text">
-            <p id="result" class="result">Fetching result ..</p>
-            <p id="tip" class="motivation">You should win this time! Try Again</p>
-        </div>
+        <p id="retry-tip">Only Freinds with this link can play with you</p>
         <div class="footer_btn">
             <button id="invite" onclick="inviteFreind()" class="block">Invite Friend</button>
         </div>
         <div id="accept" class="footer_btn">
-                <button onclick="createBattle()" class="block">Accept & Play</button>
-            </div>
-    
-
+            <button  id="accept_btn"onclick="createBattle()" class="block">Accept & Play</button>
+        </div>
     </div>
    
-
-
-
 </body>

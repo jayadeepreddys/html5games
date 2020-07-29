@@ -5,7 +5,7 @@ self.addEventListener('install', function() {
     console.log('Activate!');
   });
   self.addEventListener('fetch', function(event) {
-    console.log('Fetch!', event.request);
+  //  console.log('Fetch!', event.request);
   });
   /* navigator.serviceWorker.ready.then(function(registration) {
     if (!registration.pushManager) {
