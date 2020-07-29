@@ -163,7 +163,8 @@ function friendGame() {
         'userId': userid,
         'name': userName,
         'Prize': gameData.prize,
-        'gameUrl': gameData.gameUrl
+        'gameUrl': gameData.gameUrl,
+        'mode': 1
       })
       .then(function (battleId) {
         var battleId = battleId.id;

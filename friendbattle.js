@@ -62,7 +62,7 @@ function getMode(){
   $("#invite").hide();
   console.log("Mode 2")
   $("#opponent").text('Join & Play With Freind');
-  $("#retry-tip").text('Make sure your friend is online');
+  $("#retry-tip").text('Once accepted You will be taken to play the game');
 
   getData();
   }
@@ -131,6 +131,7 @@ function checkStatus(gameId) {
     });
 }
 function createBattle(){
+  $("#accept").hide();
   if(walletBalance >= gameData.entryFee){
     var bRef =  db.collection('Battles');
         bRef.add(
@@ -145,12 +146,12 @@ function createBattle(){
             'name': userName,
              'Prize': gameData.Prize,
              'gameUrl': gameData.gameUrl,
-             'opponent': battleId
+             'opponent': battleId,
+             'mode': 2
           })
           .then(function(newRef) {
            var opponentId =  newRef.id;
            setOpponent(opponentId); 
-           $("#accept").hide();
             
         })
         .catch(function(error) {
@@ -224,7 +225,7 @@ function inviteFreind(){
 }
 
 function generateUrl(){
-  var string = encodeURIComponent("http://localhost:5000/friendbattle.html?battleId="+battleId+'&mode=2');
+  var string = encodeURIComponent("https://moneygames.app/friendbattle.html?battleId="+battleId+'&mode=2');
   var params = {
   "longDynamicLink": "https://mgame.page.link/?link="+string,
   "suffix": {
