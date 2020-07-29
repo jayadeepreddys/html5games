@@ -18,7 +18,7 @@ function currentUser() {
 }
 function user_game_history(userid) {
     var userhistory = db.collection("TournamentUser");
-    userhistory.where("userId", "==", userid).get().then(function (querySnapshot) {
+    userhistory.where("userId", "==", userid).orderBy("timeStamp","desc").limit(100).get().then(function (querySnapshot) {
         var data = [];
         querySnapshot.forEach(function (doc) {
             data.push(doc.data());
@@ -32,7 +32,7 @@ function display_user_games(data) {
         var ondate = data[i].timeStamp.toDate();
         var ondate_day = moment(ondate).format("D");
         var ondate_month = moment(ondate).format("MMM");
-        console.log(ondate_day, ondate_month);
+       // console.log(ondate_day, ondate_month);
         if(data[i].gameImg){
             imageUrl = data[i].gameImg;
         }else{
@@ -40,7 +40,7 @@ function display_user_games(data) {
         }
         //$(".main_order_div").append('<div class="order_history_box_main"><div class="date_div"><div class="date_day">' + ondate_day + '</div><div>' + ondate_month + '</div></div><a class="navigate_tid" href="tournament.html?tournamentId='+data[i].tournamentId+'"><div class="game_img_div"></div> <div class="game_img_sub_div"><div style="display: flex; flex-direction: row; align-items: center;"><div class="f16t7t75"><img src="https://static.gamezop.com/H1WmafkP9JQ/s/square.png"class="img_game_main"></div><div class="game_txt">' + data[i].gameName + '</div></div></a></div>');
         //$(".main_order_div").append('<div class="order_history_box_main"><div class="date_div"><div class="date_day">' + ondate_day + '</div><div>' + ondate_month + '</div></div><a class="navigate_tid" href="tournament.html?tournamentId='+data[i].tournamentId+'"><div class="game_img_div"></div> <div class="game_img_sub_div"><div style="display: flex; flex-direction: row; align-items: center;"><div class="f16t7t75"><img src="https://static.gamezop.com/H1WmafkP9JQ/s/square.png"class="img_game_main"></div><div class="game_txt">' + data[i].gameName + '</div></div><div class="div_display_result"><div class="div_result_img"><div style="font-size: 0.9em;">#</div><span class="result_in_number" style="margin-left: 0px;">1</span></div><span class="div_entry_fee">Rank</span></a></div></div>');
-        $(".main_order_div").append('<div class="order_history_box_main"><div class="date_div"> <div class="date_day">'+ondate_day+'</div><div>'+ondate_month+'</div></div><div class="game_img_div"></div> <a href="tournament.html?tournamentId='+data[i].tournamentId+'" class="game_img_sub_div_ord"><div style="display: flex; flex-direction: row; align-items: center;"><div class="f16t7t75_ord"><img src="'+imageUrl+'" class="img_game_main_notif"></div><div class="game_txt_notif_ord">In '+data[i].gameName+' Game </div></div></a><div class="div_display_result_notif"><div class="div_result_img"><div style="font-size: 0.9em;"></div><span class="result_in_number" style="margin-left: 0px;">'+data[i].Score+'</span></div><span class="div_entry_fee">Score</span> </div></div>')
+        $(".main_order_div").append('<div class="order_history_box_main"><div class="date_div"> <div class="date_day">'+ondate_day+'</div><div>'+ondate_month+'</div></div><div class="game_img_div"></div> <a href="tournament.html?tournamentId='+data[i].tournamentId+'" class="game_img_sub_div_ord"><div style="display: flex; flex-direction: row; align-items: center;"><div class="f16t7t75_ord"><img src="'+imageUrl+'" class="img_game_main_notif"></div><div class="game_txt_notif_ord">'+data[i].gameName+' Game </div></div></a><div class="div_display_result_notif"><div class="div_result_img"><div style="font-size: 0.9em;"></div><span class="result_in_number" style="margin-left: 0px;">'+data[i].Score+'</span></div><span class="div_entry_fee">Score</span> </div></div>')
     }
    
 }

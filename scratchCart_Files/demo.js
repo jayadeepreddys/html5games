@@ -13,16 +13,18 @@
     });
 
 
+/* 
+     $(document).on('click', '.cyno-closeBtn', function (e) {
+         alert("offer availed");
 
-    /*  $(document).on('click', '.sc-copy', function (e) {
-        var $temp = $("<input>");
+       /*  var $temp = $("<input>");
         $("body").append($temp);
         $temp.val($(this).parent().closest('div').find(".copycouponcode").text()).select();
         document.execCommand("copy");
         $(this).parent().closest('div').find(".myTooltip").html("Copied: " + $temp.val());
-        $temp.remove();
-    }); 
-    $(document).keydown(function (e) { return 123 == e.keyCode ? !1 : e.ctrlKey && e.shiftKey && 73 == e.keyCode ? !1 : e.ctrlKey && 85 == e.keyCode ? !1 : 83 == e.keyCode && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) ? !1 : void 0 }), $(document).on("contextmenu", function (e) { e.preventDefault() });  */
+        $temp.remove(); 
+    });  */
+    $(document).keydown(function (e) { return 123 == e.keyCode ? !1 : e.ctrlKey && e.shiftKey && 73 == e.keyCode ? !1 : e.ctrlKey && 85 == e.keyCode ? !1 : 83 == e.keyCode && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) ? !1 : void 0 }), $(document).on("contextmenu", function (e) { e.preventDefault() });  
 
 
 }(jQuery));

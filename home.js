@@ -1,12 +1,14 @@
 var userid;
 var currentdate;
+var scratchcard;
+var showRewards = false;
 $(document).ready(function () {
   console.log("ready!");
   currentUser();
   currentdate = new Date();
   console.log(currentdate);
+ 
 });
-
 var newArray = [];
 function currentUser() {
   firebase.auth().onAuthStateChanged(function (user) {
@@ -21,11 +23,81 @@ function currentUser() {
       //  getTournaments();
       gamesData();
       getWallet();
-
+      checkRewards();
+      $(".three-block-item").hide();
     } else {
       window.location.href = "signup.html";
     }
   });
+}
+function checkRewards(){
+      console.log("checking rewards")
+      var startOfToday = new Date(); 
+    startOfToday.setHours(0,0,0,0);
+    var endOfToday = new Date(); 
+    endOfToday.setHours(23,59,59,999);
+    var rdata = [];
+    db.collection("Rewards").where('timeStamp','>=',startOfToday).where('userId', '==' , userid)
+    .get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          console.log(doc.id, " => ", doc.data());
+          rdata.push(doc.data());
+      });
+      console.log(rdata.length);
+      if(rdata.length > 0){
+        $(".three-block-item").hide()
+        showRewards = false;
+      }
+      else{
+        $(".three-block-item").show()
+        getOffer()
+        showRewards = true;
+      }
+  })
+  .catch(function(error) {
+      console.log("Error getting documents: ", error);
+  });
+}
+function getOffer(){
+  var oRef = db.collection("Config").doc("scratchcard");
+
+  oRef.get().then(function (doc) {
+    if (doc.exists) {
+     var offerdata = doc.data();
+     scratchcard = offerdata.offer; 
+     console.log(scratchcard);
+    } 
+    if(scratchcard > 0){
+      $(".copycouponcode").text("You Won Rs: " + scratchcard)
+    }
+    else{
+      $(".copycouponcode").text("Better Luck Tomorrow")
+    }
+   
+  }).catch(function (error) {
+    console.log("Error getting document:", error);
+  });
+}
+$(document).on('click', '.cyno-closeBtn', function (e) {
+  addPromo();
+
+}); 
+function addPromo(){
+  if(showRewards){
+  var rewardRef = db.collection("Rewards");
+  rewardRef.add({
+    userId: userid,
+    reward: scratchcard,
+    timeStamp: currentdate
+})
+.then(function() {
+    console.log("Document successfully written!");
+    checkRewards()
+})
+.catch(function(error) {
+    console.error("Error writing document: ", error);
+});
+  }
 }
 function openNav() {
   document.getElementById("mySidenav").style.width = "300px";
