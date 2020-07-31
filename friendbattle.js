@@ -220,7 +220,7 @@ function playAgain() {
 
 }
 function inviteFreind(){
-  var str1= "https://wa.me/?text=Hey, I am playing fun game.Click on this link and play with me "+surl;
+  var str1= "https://wa.me/?text=Hey, I am playing this fun game. Click on this link and play with me "+surl;
   window.location.href = str1;
 }
 

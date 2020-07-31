@@ -134,7 +134,8 @@ function joinGame() {
             'challengeId': challengeId,
             'timeStamp': new Date(),
             'userId': userid,
-            'battleId': battleId
+            'battleId': battleId,
+             'entryFee': gameData.entryFee
           })
         console.log("Added to Queue");
         preLoad(battleId);
