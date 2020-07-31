@@ -9,6 +9,7 @@ var tokens;
 var userTournament;
 var userName;
 var status;
+var displayRule = 0
 $(document).ready(function () {
   console.log("ready!");
   currentUser();
@@ -213,6 +214,18 @@ function logout() {
 }
 function paly_With_friends(battleId) {
   window.location.href = 'friendbattle.html?battleId=' + battleId + '&mode= 1';
+}
+function rule_down() {
+ //displayRule ? 0:1;
+ if(displayRule == 0){
+   $("#rules").hide();
+   displayRule=1
+ }
+ else{
+  $("#rules").show();
+  displayRule=0;
+ }
+
 }
 
 

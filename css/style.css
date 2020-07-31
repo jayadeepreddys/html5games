@@ -748,6 +748,10 @@ img {
     text-align: center;
     text-transform: uppercase;
     width: 96%;
+    transition: 0.4s;
+}
+.downArrow {
+  width: 20px;
 }
 .fes57ix {
     background-color: #ffffff;
@@ -2141,14 +2145,29 @@ button.friends_btn {
   background: #3b53cf;
   color: white;
   border-radius: 7px;
+  height: 40px;
 }
 /* fiends battle */
-div#friends_label {
-  position: fixed;
-  margin: 100% 16% 52% 18%;
-}
+
  .logo{
    width: 20%;
  } 
+ .accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
 
 
