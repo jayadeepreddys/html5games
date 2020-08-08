@@ -41,11 +41,15 @@ function loadRecaptcha() {
        $(".opposite-btn1").show();
     }
   }
+
   function authentication(phone) {
       
    // var phoneNumber = phone;
     var appVerifier = window.recaptchaVerifier;
-    var phoneNumber = "+91" + phone;
+    var countryCode = document.getElementById('select_country').value;
+    console.log(countryCode);
+    var phoneNumber = countryCode + phone;
+    console.log(phoneNumber);
     console.log(" I have reched authentication");
     firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
         .then(function (confirmationResult) {
