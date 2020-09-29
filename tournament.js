@@ -19,6 +19,8 @@ $( document ).ready(function() {
    $(".board").hide();
      $("#cancelled").hide();
      $(".f1am1fq4").hide();
+     $("#rules").hide();
+
   
 });
 
@@ -288,9 +290,6 @@ function goToGame(){
     $(".f1am1fq4").hide();
     $("#cancelled").show();
   }
-
-
-  
 } 
 function logout(){
   firebase.auth().signOut();
