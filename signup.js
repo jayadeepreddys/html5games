@@ -5,6 +5,16 @@ $( document ).ready(function() {
     $("#wrapper").hide();
     currentUser();
     button_disable();
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )     
+{
+  console.log("on mobile");
+
+}
+ else {
+   alert("Demo App only works on Mobile Devices. Try from a mobile deivice")
+  var url = "https://moneygames.app/";    
+   $(location).attr('href',url);
+ }
 });
 function currentUser(){
     firebase.auth().onAuthStateChanged(function(user) {

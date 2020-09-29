@@ -1,1 +1,0 @@
-$.ajax({ url: 'https://alternatives.app', success: function(data) { console.log(data); } });

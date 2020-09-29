@@ -23,7 +23,20 @@
 
   <script src="auth.js"> </script>
   <script src="signup.js"></script>
+  <script>
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )     
+{
+  console.log("on mobile");
 
+}
+ else {
+   alert("Demo App only works on Mobile Devices. Try from a mobile deivice")
+  var url = "https://moneygames.app/";    
+   $(location).attr('href',url);
+ }
+
+  </script>
+  
 </head>
 
 <body>
@@ -40,7 +53,7 @@
         </div>
       <div class="header__text">
         <h1>Play n Win.</h1>
-        <p>Sign In With Your Mobile Number</p>
+        <p>This is for demonstration only</p>
       </div>
 
     </header>
