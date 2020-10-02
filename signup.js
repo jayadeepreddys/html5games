@@ -36,6 +36,7 @@ function loadRecaptcha() {
    $("#phone_number").hide();
    $(".otpbutton").hide();
    $(".opposite-btn1").hide();
+   $("#select_country").hide();
 
 
     var phone = document.getElementById('phone_number').value;
