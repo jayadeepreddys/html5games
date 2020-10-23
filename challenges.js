@@ -126,7 +126,8 @@ function joinGame() {
         'userId': userid,
         'name': userName,
         'Prize': gameData.prize,
-        'gameUrl': gameData.gameUrl
+        'gameUrl': gameData.gameUrl,
+        'domain': gameData.domain
       })
       .then(function (battleId) {
         var battleId = battleId.id;
@@ -136,7 +137,8 @@ function joinGame() {
             'timeStamp': new Date(),
             'userId': userid,
             'battleId': battleId,
-             'entryFee': gameData.entryFee
+             'entryFee': gameData.entryFee,
+             'domain': gameData.domain
           })
         console.log("Added to Queue");
         preLoad(battleId);
@@ -165,7 +167,8 @@ function friendGame() {
         'name': userName,
         'Prize': gameData.prize,
         'gameUrl': gameData.gameUrl,
-        'mode': 1
+        'mode': 1,
+        'domain': gameData.domain
       })
       .then(function (battleId) {
         var battleId = battleId.id;

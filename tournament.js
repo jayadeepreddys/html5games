@@ -10,6 +10,9 @@ var userTournament;
 var userName;
 var status;
 var displayRule=0;
+var currentdate;
+var currenthour;
+var cdate;
 $( document ).ready(function() {
     console.log( "ready!" );
    currentUser();
@@ -20,8 +23,11 @@ $( document ).ready(function() {
      $("#cancelled").hide();
      $(".f1am1fq4").hide();
      $("#rules").hide();
-
-  
+    currentdate = new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
+    console.log(currentdate);
+    domain = window.location.hostname;
+    cdate = new Date();
+    currenthour = cdate.getHours();
 });
 
 function currentUser(){
@@ -82,7 +88,7 @@ function getWallet(){
 function checkUser(){
   $(".f1am1fq4").show();
     var docRef = db.collection("TournamentUser");
-    docRef.where("tournamentId", "==", tournamentId).where("userId", "==", userid).get().then(function(querySnapshot) {
+    docRef.where("tournamentId", "==", tournamentId).where("userId", "==", userid).where("timeStamp", ">=", currentdate).get().then(function(querySnapshot) {
       var data = [];
       querySnapshot.forEach(function(doc) {
           // doc.data() is never undefined for query doc snapshots
@@ -115,7 +121,7 @@ function closeNav() {
 
   function getScores(id){
     var tourdata = [];
-    db.collection("TournamentUser").where("tournamentId", "==", id)
+    db.collection("TournamentUser").where("tournamentId", "==", id).where("timeStamp", ">=", currentdate)
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -150,8 +156,8 @@ function getTournaments(id){
            var totalPrize = data.Prize;
            var entryFee = data.entryFee;
            var joined = data.joined;
-           status = data.status;
-            console.log(status);
+        //   status = data.status;
+         //   console.log(status);
            
           /*  if(joined < minUsers){
             $(".board").hide();
@@ -252,7 +258,8 @@ function joinGame(){
           'tournamentId' :data.tournamentId,
           'userId': userid,
           'Score': 0,
-          'name': userName
+          'name': userName,
+          'domain': data.domain
         })
       checkUser();
       }
@@ -274,22 +281,22 @@ function goToGame(){
     window.location.href= finalurl;
 }
   function leaderBoard(tourdata){
-    console.log(data.status)
+   // console.log(data.status)
    
   if(tourdata.length > 0){
     $(".board").show();
     for(var i=0;i<tourdata.length;i++ )
   $(".minprizes").append('<div class="f1d4a11x"><div class="f1mi6qxz">'+tourdata[i].name+'</div><span class="fkhz08q" style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 40px;"><span>'+tourdata[i].Score+'</span></div></span><span class="fkhz08q" style="position: absolute; right: 15px;"><div class="fewc13u" style="right: 15px; width: 177px;"><span>'+(i+1)+'</span></div></span></div>');
   }
-  if(data.status === 1){
+   if(data.duration < currenthour){
     console.log("Game completed");
     $(".f1am1fq4").hide();
   }
-  if(data.status === 2){
+  /* if(data.status === 2){
     console.log("Game Cancelled");
     $(".f1am1fq4").hide();
     $("#cancelled").show();
-  }
+  }  */ 
 } 
 function logout(){
   firebase.auth().signOut();

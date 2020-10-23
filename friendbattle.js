@@ -147,7 +147,8 @@ function createBattle(){
              'Prize': gameData.Prize,
              'gameUrl': gameData.gameUrl,
              'opponent': battleId,
-             'mode': 2
+             'mode': 2,
+             'domain': gameData.domain
           })
           .then(function(newRef) {
            var opponentId =  newRef.id;

@@ -34,10 +34,10 @@ function setAmount(val){
 
 function goPay(){
     amount = document.getElementById("walletInput").value;
-  //  console.log(input);
+  //  Razor pay payment gateway
   if(amount){
     var options = {
-        "key": "rzp_live_bHhUvO73nyIcd3", // Enter the Key ID generated from the Dashboard
+        "key": "rzp_test_EyGa0zcq3FhVfv", // Enter the Key ID generated from the your razorpay Dashboard
         "amount": amount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         "currency": "INR",
         "description": "Recharge",
