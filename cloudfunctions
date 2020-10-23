@@ -1,0 +1,807 @@
+const functions = require('firebase-functions');
+
+// // Create and Deploy Your First Cloud Functions
+// // https://firebase.google.com/docs/functions/write-firebase-functions
+//
+// exports.helloWorld = functions.https.onRequest((request, response) => {
+//  response.send("Hello from Firebase!");
+// });
+const admin = require('firebase-admin');
+admin.initializeApp();
+var db = admin.firestore();
+var currentdate = new Date();
+currentday = currentdate.getDay();
+currenthour = currentdate.getHours() + 6;
+var Prize;
+var Split;
+var minUsers;
+
+
+exports.updateBalance = functions.firestore
+    .document('TournamentUser/{tournamentId}')
+    .onCreate((snap, context) => {
+      // Get an object representing the document
+      // e.g. {'name': 'Marie', 'age': 66}
+      const newValue = snap.data();
+
+      // access a particular field as you would any JS property
+      const userId = newValue.userId;
+      const entryFee = newValue.entryFee;
+      const tournamentId = newValue.tournamentId;
+      const gameName = newValue.gameName;
+      var message = `Tournament ${gameName} Entry Fee`;
+      var amount = -entryFee;
+    console.log(entryFee);
+    db = admin.firestore();
+      // perform desired operations ...
+      const tourRef = db.collection('Tournaments').doc(tournamentId);
+   // const userRef = db.collection('Users').doc(userId);
+    /*  const res = userRef.update({
+    walletBalance: admin.firestore.FieldValue.increment(-entryFee)
+     }, { merge: true });
+      */
+     depositBalance(userId, amount, message);
+     // Increses Joined count for tournaments
+      const tres = tourRef.update({
+        joined: admin.firestore.FieldValue.increment(1)
+         }, { merge: true }); 
+     
+         return null;
+    });
+// add amount to user on sucessful recharge
+   exports.rechargeWallet = functions.firestore
+    .document('Payments/{paymentId}')
+    .onCreate((snap, context) => {
+      // Get an object representing the document
+      // e.g. {'name': 'Marie', 'age': 66}
+      const newValue = snap.data();
+
+      // access a particular field as you would any JS property
+      const userId = newValue.userId;
+      const amount = newValue.amount;
+      console.log(amount);
+      var message = "Wallet Recharge"
+      depositBalance(userId, amount, message);
+         return null;
+    });
+
+    // Match making for players
+   exports.queueMatch = functions.firestore
+   .document('ChallengeQueue/{someId}')
+   .onCreate((snap, context) => {
+     // Get an object representing the document
+     // e.g. {'name': 'Marie', 'age': 66}
+     const newValue = snap.data();
+     const playerId = snap.id;
+     const challengeId = newValue.challengeId;
+     const battleId = newValue.battleId;
+     const entryFee = newValue.entryFee;
+       if(entryFee > 0){
+       checkQueue(challengeId, playerId, battleId);
+       }
+       else {
+        deleteQueue(playerId);
+        waitInQueue(playerId,battleId);
+       }
+       return null;
+   });
+  
+
+     async function checkQueue(challengeId, playerId, battleId){
+      db = admin.firestore();
+      const tourRef = db.collection('ChallengeQueue');
+      const snapshot = await tourRef.where('challengeId','==', challengeId).get();
+      const queuedata = [];
+      if (snapshot.empty) {
+      console.log('No users online.');
+      return;
+      }  
+     
+      snapshot.forEach(doc => {
+        if(doc.id !== playerId){
+      queuedata.push(doc.data());
+        }
+      });
+      if(queuedata.length > 0){
+     //   var filteredAry = queuedata.filter(e => e !== snapId);
+        var player2Id = queuedata[0].userId;
+        var player2battleId = queuedata[0].battleId;
+        var opponent = queuedata[0].opponent;
+        // Create a Match
+        if(!opponent){
+        updateBattle(battleId,player2battleId);
+      //  getUserId(battleId);
+       // getUserId(player2Id);
+        console.log("Players Matched");
+        deleteQueue(playerId);
+        deleteQueue(player2Id);
+        }
+       
+      }
+      else{
+        console.log("waiting in the queue");
+        noOpponent(playerId,battleId);
+        
+      }
+  //  return null;
+  }
+      async function getUserId(battleId){
+              const cityRef = db.collection('Battles').doc(battleId);
+      const doc = await cityRef.get();
+      if (!doc.exists) {
+        console.log('No such document!');
+      } else {
+          var uData = doc.data();
+          var userId = uData.userId;
+          var entryFee = uData.entryFee;
+          var battleName = uData.gameName;
+          var amount = -entryFee;
+          var isUpdated = uData.isUpdated;
+         // console.log(uData);
+         if(isUpdated){
+          console.log('Already Updated');
+         }
+         else{
+          console.log(`${amount}: ${userId}`);
+          var message = `Entry Fee Battle: ${battleName}`;
+          depositBalance(userId,amount,message);
+         }
+      }
+
+      }
+        // Make user wait in the queue for 5 seconds before deleting
+       async function waitInQueue(player,battleId){
+        console.log("Assigning Bot");
+        const users = ["+91991XXX9903", "+919789XXX9456", "+91989XXX9321", "+91909XXX9102", "+91954XXX3465", "+91985XXX3454", "+91961XXX1241"];
+        const randomusers = Math.floor(Math.random() * users.length);
+       // console.log(random, months[random]);
+        var user = users[randomusers];
+        // random scores
+        const scores = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
+        const randomscores = Math.floor(Math.random() * scores.length);
+       // console.log(random, months[random]);
+        var score = scores[randomscores];
+
+        const res = await db.collection('Battles').add({
+          name: user,
+          mode: 4,
+          Score: score,
+          isUpdate: true
+        });
+        var opponent = res.id;
+        updateBattle(battleId,opponent)
+       }
+       async function noOpponent(player,battleId){
+         await sleep(6000)
+        deleteQueue(player);
+        console.log("Opponents not available");
+         const res = db.collection('Battles').doc(battleId).update({
+          status: 0
+        }); 
+       }
+
+       async function updateBattle(player1,player2){
+        const res = db.collection('Battles').doc(player1).update({
+          opponent: player2
+        });
+        getUserId(player1);
+        const res2 = db.collection('Battles').doc(player2).update({
+          opponent: player1
+        });
+        getUserId(player2);
+       }
+
+        async function deleteQueue(player){
+          const res = await db.collection('ChallengeQueue').doc(player).delete();
+          console.log("Queue deleted");
+        }
+       // sleep functioon
+       function sleep(millis) {
+        return new Promise(resolve => setTimeout(resolve, millis));
+      }
+    // Withraw amount
+   exports.withdrawAmount = functions.firestore
+   .document('Withdrawls/{amount}')
+   .onCreate((snap, context) => {
+     // Get an object representing the document
+     // e.g. {'name': 'Marie', 'age': 66}
+     const newValue = snap.data();
+
+     // access a particular field as you would any JS property
+     const userId = newValue.userId;
+     const amount = newValue.amount;
+     console.log(amount);
+     var message = "Money Withdrawl";
+     depositBalance(userId, amount, message);
+        return null;
+   });
+    // Daily scratch card
+    exports.dailyRewards = functions.firestore
+    .document('Rewards/{amount}')
+    .onCreate((snap, context) => {
+      // Get an object representing the document
+      // e.g. {'name': 'Marie', 'age': 66}
+      const newValue = snap.data();
+ 
+      // access a particular field as you would any JS property
+      const userId = newValue.userId;
+      const amount = newValue.reward;
+      if(amount > 0){
+      var message = "Daily Scratch Card Rewards";
+      depositBalance(userId, amount, message);
+      }
+         return null;
+    });
+
+      //Pay Battle Prize to the winner
+      exports.battleWinner = functions.firestore
+      .document('Battles/{battleId}')
+      .onUpdate((change, context) => {
+        // Get an object representing the document
+        // e.g. {'name': 'Marie', 'age': 66}
+        const newValue = change.after.data();
+
+        // access a particular field as you would any JS property
+        const userId = newValue.userId;
+        const battlePrize = newValue.Prize;
+        const opponent = newValue.opponent;
+        const score = newValue.Score;
+        const mode = newValue.mode;
+        const isUpdated = newValue.isUpdated;
+        var entryFee = newValue.entryFee;
+        const gameName = newValue.gameName;
+        if(score){
+        if(isUpdated){
+         console.log("Already marked winner");   
+        } 
+        else {
+          payPrize(userId,battlePrize,opponent,score);   
+        }
+      }
+      if(mode){
+        if(opponent && !score){
+          var message = `Battle ${gameName} entry fee`;
+          var amount = -entryFee;
+          depositBalance(userId,amount,message);
+        }
+
+      } 
+        
+      //  depositBalance(userId, amount)
+            return null;
+      });
+
+       //Pay Battle Prize to the winner
+       exports.battleMode = functions.firestore
+       .document('Battles/{battleId}')
+       .onCreate((snap, context) => {
+         // Get an object representing the document
+         // e.g. {'name': 'Marie', 'age': 66}
+         const newValue = snap.data();
+ 
+         // access a particular field as you would any JS property
+         const userId = newValue.userId;
+         const mode = newValue.mode;
+         var entryFee = newValue.entryFee;
+         const gameName = newValue.gameName;
+         var message = `Battle ${gameName} entry fee`;
+        
+       if(mode === 2){
+           var amount = -entryFee;
+           depositBalance(userId,amount,message);
+         }
+       //  depositBalance(userId, amount)
+             return null;
+       });
+
+      // pay winner amount Battle
+      async function payPrize(userId,battlePrize,opponent,score){
+        const bRef = db.collection('Battles').doc(opponent);
+        const doc = await bRef.get();
+        if (!doc.exists) {
+          console.log('No such document!');
+        } else {
+          var bData = doc.data();
+          opponentId = bData.userId;
+          var entryFee = bData.entryFee;
+          var player = bData.opponent;
+          var gameName = bData.gameName;
+          var message = `Battle ${gameName} Won`;
+          opponenetScore = bData.Score;
+          if(opponenetScore){ 
+           /*  if(opponenetScore > score){
+            depositBalance(opponentId, battlePrize,message);
+            const res1 = db.collection('Battles').doc(opponent).update({"isUpdated": true});
+            } */
+            if(opponenetScore < score){
+              depositBalance(userId, battlePrize,message);
+              const res2 = db.collection('Battles').doc(player).update({"isUpdated": true});
+              }
+            if(opponenetScore === score){
+              var newmessage = `Battle ${gameName} Draw`;
+              var battleFee = entryFee;
+              console.log(battleFee);
+              depositBalance(opponentId, battleFee,newmessage);
+              const res3 = db.collection('Battles').doc(opponent).update({"isUpdated": true});
+              depositBalance(userId, battleFee,newmessage);
+              const res4 = db.collection('Battles').doc(player).update({"isUpdated": true});
+            }
+            
+          }
+          else{
+            console.log("Oponenet Score not available yet");
+          }
+        }
+      }
+
+    // trigger on user first time creation
+    exports.newUserSignup = functions.auth.user().onCreate((user) => {
+     var userId = user.uid;
+     var walletBalance = 5;
+     var message = 'SignUp Bonus'
+     depositBalance(userId, walletBalance, message);
+  //   const userRef =db.collection('Users');
+   //  const res = userRef.doc(userid).set({"userId": userid, "walletBalance": walletBalance});
+     return null;
+    });
+
+    //Job to run every day morning
+   // exports.tournamentFunction = functions.pubsub.schedule('every 24 hours').onRun((context) => {
+   //   updateEndTime();
+   //   return null;
+  //  });
+    async function updateEndTime(){
+      console.log('This will be run every 24 Hrs');
+        currentdate = new Date();
+        console.log(currentdate);
+        db = admin.firestore();
+        const tourRef = db.collection('Tournaments');
+        const snapshot = await tourRef.where('days', 'array-contains', currentday).get();
+       // const tourdata = [];
+        if (snapshot.empty) {
+        console.log('No tournaments today.');
+        return;
+        }  
+       
+        snapshot.forEach(doc => {
+     
+        updateTime(doc.id);
+      
+        });
+       
+    }
+    async function updateJoined(docid){
+      console.log(docid);
+      const docRef = db.collection('Tournaments').doc(docid);
+      const doc = await docRef.get();
+      if (!doc.exists) {
+        console.log('No such document!');
+      } else {
+        console.log('updating joined to zero');
+      docRef.update({'joined': 0});
+      }
+      }
+    // Job to close re create tournament runs every 10 minutes
+    exports.scheduledFunction = functions.pubsub.schedule('every 50 minutes').onRun((context) => {
+      getDatas();
+      return null;
+    });
+    ////////// This is new function to mathc users// -- current efficiency is low
+   /*  exports.queueFunction = functions.pubsub.schedule('every 1 seconds').onRun((context) => {
+      getChallenges();
+      return null;
+    }); */
+    // get challenge Ids
+   /*  async function getChallenges(){
+      const cRef = db.collection('Challenges');
+      const snapshot = await cRef.get();
+      if (snapshot.empty) {
+        console.log('No matching documents.');
+        return;
+      }  
+
+      snapshot.forEach(doc => {
+        //console.log(doc.id, '=>', doc.data());
+        var challengeId = doc.id;
+        checkQueueWithId(challengeId);
+      });
+    }
+     // Get challenges in the queue
+     async function checkQueueWithId(challengeId){
+      const qRef = db.collection('ChallengeQueue');
+      const snapshot = await qRef.get();
+      if (snapshot.empty) {
+        console.log('No Players in the queue');
+        return;
+      }  
+       var queue = [];
+      snapshot.forEach(doc => {
+        var queuedata = doc.data();
+       queue.push(queuedata);
+      });
+      newQueueMatch(queue);
+     }
+     // get battleId from player queue
+     async function newQueueMatch(queue){
+       if(queue.length > 1){
+       player1 = queue[0].battleId;
+       player2 = queue[1].battleId;
+       player1Id = queue[0].userId;
+       player2Id = queue[1].userId;
+       matchChallenges(player1,player2);
+       deleteQueue(player1Id);
+       deleteQueue(player2Id);
+     }
+     else {
+       console.log("Player count is less");
+     }
+    }
+   // create match with battle ids
+    async function matchChallenges(player1,player2){
+         // Add a new document with a generated id.
+      const res = await db.collection('MatchedChallenges').add({
+        player1: player1,
+        player2: player2
+      });
+      var MatchId = res.id;
+      newUpdateBattle(player1,player2, MatchId);
+    }
+    // update the match Id on players. 
+    async function newUpdateBattle(player1,player2, MatchId){
+      const res = db.collection('Battles').doc(player1).update({
+        opponent: player2,
+        matchId: MatchId
+      });
+      const res2 = db.collection('Battles').doc(player2).update({
+        opponent: player1,
+        matchId: MatchId
+      });
+      console.log("Match Ids Added");
+     } */
+
+    async function getDatas(){
+       // currentdate = new Date();
+      //  console.log(currentdate);
+        db = admin.firestore();
+        const tourRef = db.collection('Tournaments');
+        console.log(currenthour);
+        console.log(currentday);
+        const snapshot = await tourRef.where('duration', '<', currenthour).where('days', 'array-contains', currentday).get();
+       // const tourdata = [];
+        if (snapshot.empty) {
+        console.log('Not enough users for the tournaments.');
+        return;
+        }  
+       
+        snapshot.forEach(doc => {
+       // tourdata.push(doc.id);
+        console.log(doc.id);
+        startPayment(doc.id);
+      
+        });
+       
+    }
+      
+      // function to end the game
+        async function updateStatus(docid, status){
+            console.log(docid);
+            const docRef = db.collection('Tournaments').doc(docid);
+            const res = await docRef.update({status: status});
+            if(status === 1){
+            startPayment(docid);
+            }
+        }
+        async function startPayment(docid){
+          const docRef = db.collection('Tournaments').doc(docid);
+            const getData = await docRef.get();
+            if (!getData.exists) {
+              console.log('No such document!');
+            } else {
+            var data = getData.data();
+            var joined = data.joined;
+            minUsers = data.minLimit;
+            var entryFee = data.entryFee;
+            Split = data.prizesplit;
+            Prize = joined*entryFee;
+
+            console.log(Prize);
+            if(Prize > 0){
+            if(joined >= minUsers){
+                console.log('Minimum users reached');
+            getTournamentUsers(docid);
+            }
+            else{
+                console.log('Minimum users not reached');
+                refundMoney(docid);
+                var status = 2;
+                // as minimum users not reached game should be shown as cancelled and refunded
+              //  updateStatus(docid, status);
+            } 
+          }
+          else{
+            console.log("This is a free tournament");
+            var newstatus = 3;
+          //  updateStatus(docid, newstatus);
+          }
+          }
+        }
+        // get descending order of scores of  user playing the tournaments
+        async function getTournamentUsers(docid){
+            console.log("tournament id is");
+            console.log(docid);
+            var tdate = currentdate.setHours(0,0,0,0);
+        const userRef = db.collection('TournamentUser');    
+        const snapshot = await userRef.where('tournamentId', '==', docid).where('timeStamp', '>', tdate).get();
+        const tourdata = [];
+        if (snapshot.empty) {
+        console.log('No matching tournament users.');
+        }  
+       // console.log(snapshot);
+        //onsole.log(snapshot.length);
+        snapshot.forEach(doc => {
+        tourdata.push(doc.data());
+        console.log(tourdata);
+        
+        });
+        // rest Joined to ZERO
+        updateJoined(docid);
+        // sort data by ranks
+        tourdata.sort(function(a, b) {
+            return parseFloat(b.Score) - parseFloat(a.Score);
+        });
+        console.log(tourdata);
+         // Now pay users based on predefined configuration
+         if(minUsers === 30){
+         for(var j=1;j<=Split;j++){
+         switch(j){
+             case 1:
+             startRank = 0;
+             endRank = 9;
+             amount = Prize*0.5/10;
+             payByRank(startRank,endRank,amount,tourdata);
+             break;
+             case 2:
+             startRank = 10;
+             endRank = 19;
+             amount = Prize*0.3/10;
+             payByRank(startRank,endRank,amount,tourdata);
+             break;
+             case 3:
+             startRank = 20;
+             endRank = 29;
+             amount = Prize*0.2/10;
+             payByRank(startRank,endRank,amount,tourdata);
+             break;
+             default:
+             console.log('case is not defined');
+         }
+           
+        } 
+      }
+      if(minUsers === 15){
+        for(var k=1;k<=Split;k++){
+        switch(k){
+            case 1:
+            startRank = 1;
+            endRank = 5;
+            amount = Prize*0.5/5;
+            payByRank(startRank,endRank,amount,tourdata);
+            break;
+            case 2:
+            startRank = 6;
+            endRank = 10;
+            amount = Prize*0.3/5;
+            payByRank(startRank,endRank,amount,tourdata);
+            break;
+            case 3:
+            startRank = 11;
+            endRank = 15;
+            amount = Prize*0.2/5;
+            payByRank(startRank,endRank,amount,tourdata);
+            break;
+            default:
+            console.log('case is not defined');
+        }
+          
+       } 
+     }
+      if(minUsers === 10){
+        for(var l=1;l<=Split;l++){
+        switch(l){
+            case 1:
+            startRank = 1;
+            endRank = 4;
+            amount = Prize*0.5/4;
+            payByRank(startRank,endRank,amount,tourdata);
+            break;
+            case 2:
+            startRank = 5;
+            endRank = 7;
+            amount = Prize*0.3/3;
+            payByRank(startRank,endRank,amount,tourdata);
+            break;
+            case 3:
+            startRank = 8;
+            endRank = 10;
+            amount = Prize*0.2/3;
+            payByRank(startRank,endRank,amount,tourdata);
+            break;
+            default:
+            console.log('case is not defined');
+        }
+          
+       } 
+     }
+     if(minUsers === 3){
+      for(var m=1;m<=Split;m++){
+      switch(m){
+          case 1:
+          startRank = 0;
+          endRank = 0;
+          amount = Prize*0.5;
+          payByRank(startRank,endRank,amount,tourdata);
+          break;
+          case 2:
+          startRank = 1;
+          endRank = 1;
+          amount = Prize*0.3;
+          payByRank(startRank,endRank,amount,tourdata);
+          break;
+          case 3:
+          startRank = 2;
+          endRank = 2;
+          amount = Prize*0.2;
+          payByRank(startRank,endRank,amount,tourdata);
+          break;
+          default:
+          console.log('case is not defined');
+      }
+        
+     } 
+   }
+      
+        } 
+
+        // refund money to the users if min player are not reached
+        async function refundMoney(docid){
+            const userRef = db.collection('TournamentUser');   
+            var tdate = currentdate.setHours(0,0,0,0); 
+            var cdate = new Date(tdate);
+          //  var eDate = currentdate.setHours(23,59,59,999);
+            console.log(cdate);
+            console.log(docid);
+            console.log(tdate);
+            const snapshot = await userRef.where('tournamentId', '==', docid).where('timeStamp', '>=', cdate).get();
+            if (snapshot.empty) {
+            console.log('Refund: No matching tournament users.');
+            }  
+           // console.log(snapshot);
+            //onsole.log(snapshot.length);
+            else {
+            snapshot.forEach(doc => {
+           // var tourData = doc.data();
+            var userId = doc.data().userId;
+            var amount = doc.data().entryFee;   
+            var gameName = doc.data().gameName;
+            var message = `Tournament ${gameName} Refund`;
+            console.log('refunding user balance');
+            depositBalance(userId, amount, message);
+        });
+      }
+       // rest Joined to ZERO
+       updateJoined(docid);
+           
+        }
+        // deposit amount to user account
+        function depositBalance(userId, amount, message){
+          if(userId){
+          const userRef =db.collection('Users').doc(userId);
+         const res = userRef.update({
+         walletBalance: admin.firestore.FieldValue.increment(amount)
+        }, { merge: true });
+        console.log("user balance updated");
+        gameHistory(userId, amount, message)
+        }
+        else {
+          console.log("userId is not defined");
+        }
+        }
+
+        // add message on every deposit made
+        function gameHistory(userId, amount, message){
+          if(!message){
+            message = "Reason Not mentioned";
+          }
+          const iRef =db.collection('GameHistory');
+         const res = iRef.add({
+        userId: userId,
+        amount: amount,
+        message: message,
+        timeStamp: currentdate
+        });
+        console.log("Game Payment History Added");
+        }
+        // deposit amount to user by rank
+        function payByRank(startRank, endRank,amount,tournamentUsers){
+          for(var i=startRank; i<=endRank;i++){
+              if(tournamentUsers.length > i){
+              var userId = tournamentUsers[i].userId;
+              var message = 'Tournament Winner';
+              depositBalance(userId, amount, message);
+              console.log("amount deposited");
+              }
+              else{
+                  console.log("User count is less");
+              }
+          }
+        }
+
+      
+      exports.createTournament = functions.firestore
+    .document('Tournaments/{tournamentId}')
+    .onUpdate((change, context) => {
+      // Get an object representing the document
+      // e.g. {'name': 'Marie', 'age': 66}
+      const newValue = change.after.data();
+      const status = newValue.status;
+        console.log(newValue);
+     
+      // access a particular field as you would any JS property
+     if(status === 1){
+        const tRef =db.collection('Tournaments');
+        const res = tRef.add(newValue);
+       console.log("New tournament created");
+       
+     }
+     else{
+         console.log("Nothing to update");
+     }
+      return null;
+    // userRef.update("walletBalance", FieldValue.increment(-entryFee));
+    });
+    exports.createChallenges = functions.firestore
+    .document('Challenges/{challengeId}')
+    .onUpdate((change, context) => {
+      // Get an object representing the document
+      // e.g. {'name': 'Marie', 'age': 66}
+      const newValue = change.after.data();
+      const status = newValue.status;
+        console.log(newValue);
+     
+      // access a particular field as you would any JS property
+     if(status === 1){
+        const tRef =db.collection('Challenges');
+        const res = tRef.add(newValue);
+       console.log("New challenge created");
+       
+     }
+     else{
+         console.log("Nothing to update");
+     }
+      return null;
+    // userRef.update("walletBalance", FieldValue.increment(-entryFee));
+    });
+ /*   
+    exports.newTournament = functions.firestore
+    .document('Tournaments/{tournamentId}')
+    .onCreate((snap, context) => {
+        const newValue = snap.data();
+        var id = snap.id;
+        console.log(id);
+        var duration = newValue.duration;
+        var tendDate = new Date();
+        tendDate.setHours( tendDate.getHours() + duration );
+        console.log(tendDate);
+        console.log(id);
+     const teRef = db.collection('Tournaments').doc(id);
+     const res = teRef.update({
+    'tournamentId': id,
+    'joined': 0,
+    'startTime': currentdate,
+    'endTime': tendDate,
+    'status': 0
+     }, { merge: true });
+      return null;
+    // userRef.update("walletBalance", FieldValue.increment(-entryFee));
+    }); 
+    */
