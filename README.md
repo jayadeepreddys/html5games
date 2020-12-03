@@ -14,4 +14,4 @@ Jayadeep Reddy.
 https://www.linkedin.com/in/jayadeepreddy/
 
 Website:
-https://moneygames.app - Only for Demo. 
+https://moneygames-56fe2.web.app/ - Only for Demo. 
